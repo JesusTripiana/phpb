@@ -1,2 +1,0 @@
-# phpb
-Ejercicios php

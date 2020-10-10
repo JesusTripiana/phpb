@@ -1,0 +1,38 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse:collapse;
+  padding: 4px;
+}
+
+#paquete {
+  margin:0 auto;
+  width:300px;
+  background-color:#fff;
+  border: 1px solid;	
+}
+
+#titulo{
+  background-color:blue;
+  padding:20px;
+  color:white;
+  text-align:center;
+}
+
+#titulo h1{
+   font-size:30px;
+}
+
+#caja{
+  background-color:white;
+  clear:left;
+  padding:20px;
+}
+
+body{
+  background:silver;
+  text-align:justify;
+  color:#211;
+  font-size:16px;
+}
+
+
