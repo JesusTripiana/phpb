@@ -5,11 +5,23 @@ table, th, td {
   margin:15px;
 }
 
-th {
-  background-color:black;
-  color:white;
-}
-
 .dere{
    text-align:right;
+}
+
+.titulo{
+  background-color:blue;
+  padding:20px;
+  color:white;
+  text-align:center;
+}
+
+.titulo h1{
+   font-size:20px;
+}
+
+.caja{
+  background-color:white;
+  clear:left;
+  padding:20px;
 }

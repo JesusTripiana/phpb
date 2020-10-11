@@ -30,7 +30,7 @@
 	
 	<table>
 		<tr>
-			<th colspan="2">Generación de 50 valores aleatorios</th>
+			<th colspan="2" style="background-color: black;color:white">Generación de 50 valores aleatorios</th>
 		</tr>
 		<tr>
 			<td style="width:250px">Máximo</td>
