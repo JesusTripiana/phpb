@@ -1,0 +1,15 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse:collapse;
+  padding: 5px;
+  margin:15px;
+}
+
+th {
+  background-color:black;
+  color:white;
+}
+
+.dere{
+   text-align:right;
+}
