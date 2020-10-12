@@ -1,0 +1,14 @@
+body{
+  
+  text-align:center;
+  font-size:15px;
+}
+
+table, th, td{
+	padding:5px;
+	margin: 0 auto;
+}
+
+td {
+	font-size:100px;
+}
