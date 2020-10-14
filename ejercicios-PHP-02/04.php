@@ -14,7 +14,7 @@
 	   $num= random_int(1,NUMALT);
 	   $numMax=$num;
 	   $numMin=$num;
-	   $media=0;
+	   $media=$num;// para que sume tambien el primer numero.
 	   
 	   for ($i=1;$i<NUMCREAR;$i++){
 	       if ($numMax<$num){

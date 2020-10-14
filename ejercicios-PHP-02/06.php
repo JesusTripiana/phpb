@@ -6,6 +6,7 @@
     <h1>Ejercicio 6</h1>
 	<hr>
 	<h4> Almenas de *</h4>
+	<code>
 	<?php 
 	   $almenas=random_int(1, 7);
 	   for($row=0;$row<2;$row++){
@@ -26,10 +27,12 @@
 	       echo '*';
 	   }
 	?>
+	</code>
 	<br>
 	<hr>
 	<h4>Almenas de Ladrillo</h4>
 	<p style="font-size: 35px">
+	<code>
 	<?php 
 	
 	   for($row=0;$row<2;$row++){
@@ -50,6 +53,7 @@
 	       echo '&#x2632';
 	   }
 	?>
+	</code>
 	</p>
 	
   </body>
