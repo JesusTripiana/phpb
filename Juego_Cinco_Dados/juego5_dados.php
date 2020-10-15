@@ -51,21 +51,11 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <link href="estilos.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
-    
-    table, tr, td{
-     padding: 0 auto;
-     margin: 0 auto;
-    }
-    body{
-        text-align:center;
-        font-size:16px;
-    }
     
     .tamano{
         font-size:160px;
-       
+        border:15px solid;
     }
     
     </style>
@@ -91,27 +81,25 @@ completarPartida($jugador2);
 <p>
 <table>
     	<tr>
-    		<td>Jugador 1</td>
+    		<td><b>Jugador 1</b></td>
     		<?php foreach ($jugador1 as $contenido){
-    		      echo '<td class="tamano">'.valorDibujo($contenido).'</td>';    
+    		      echo '<td class="tamano" style="border-color:red">'.valorDibujo($contenido).'</td>';    
     		}
     		
     		$jugador1[]=calcularResultado($jugador1);
     		
-    		echo '<td>'.$jugador1[sizeof($jugador1)-1].'puntos</td>';
+    		echo '<td><b>'.$jugador1[sizeof($jugador1)-1].'puntos</b></td>';
     		?>	
     	</tr>
- </table>
- <table>
     	<tr>
-    		<td>Jugador2</td>
+    		<td><b>Jugador 2</b></td>
     		<?php foreach ($jugador2 as $contenido){
-    		      echo '<td class="tamano">'.valorDibujo($contenido).'</td>';    
+    		      echo '<td class="tamano" style="border-color:blue">'.valorDibujo($contenido).'</td>';    
     		}
     		
     		$jugador2[]=calcularResultado($jugador2);
     		
-    		echo '<td>'.$jugador2[sizeof($jugador1)-1].'puntos</td>';
+    		echo '<td><b>'.$jugador2[sizeof($jugador2)-1].'puntos</b></td>';
     		?>	
     	</tr>
     	
@@ -119,11 +107,13 @@ completarPartida($jugador2);
 <?php
 
 $ganador=calculoGanador($jugador1, $jugador2);
+$msg="<b>Resultado: </b>";
 switch ($ganador){
-    case 0: echo "¡¡Empate!!";break;
-    case 1: echo "Ha ganado el jugador 1.";break;
-    case 2: echo "Ha ganado el jugador 2.";break;
+    case 0:  $msgGanador = " ¡¡Empate!!";break;
+    case 1:  $msgGanador = " Ha ganado el jugador 1.";break;
+    case 2:  $msgGanador = " Ha ganado el jugador 2.";break;
 }
+echo $msg.$msgGanador;
 
 ?>
 
