@@ -53,7 +53,7 @@
     <meta charset="UTF-8">
     <style type="text/css">
     
-<<<<<<< HEAD
+
     table, tr,td{
      padding: 0 auto;
      margin: 0 auto;
@@ -68,11 +68,10 @@
     .formato{
     font-size: 160px; 
     border:15px solid;
-=======
+
     .tamano{
         font-size:160px;
         border:15px solid;
->>>>>>> 66239e7a91c16f213ce83b29a3a8b930e55cd201
     }
     
     
@@ -98,17 +97,12 @@ completarPartida($jugador2);
 ?>
 <p>
 <table>
-<<<<<<< HEAD
+
     	<tr style=" text-align:center">
     		<td>Jugador 1</td>
     		<?php foreach ($jugador1 as $contenido){
     		      echo '<td class="formato" style="border-color:red">'.valorDibujo($contenido).'</td>';    
-=======
-    	<tr>
-    		<td><b>Jugador 1</b></td>
-    		<?php foreach ($jugador1 as $contenido){
-    		      echo '<td class="tamano" style="border-color:red">'.valorDibujo($contenido).'</td>';    
->>>>>>> 66239e7a91c16f213ce83b29a3a8b930e55cd201
+   
     		}
     		
     		$jugador1[]=calcularResultado($jugador1);
@@ -119,11 +113,10 @@ completarPartida($jugador2);
     	<tr>
     		<td><b>Jugador 2</b></td>
     		<?php foreach ($jugador2 as $contenido){
-<<<<<<< HEAD
+
     		      echo '<td style=" font-size: 160px; border:15px solid blue">'.valorDibujo($contenido).'</td>';    
-=======
+
     		      echo '<td class="tamano" style="border-color:blue">'.valorDibujo($contenido).'</td>';    
->>>>>>> 66239e7a91c16f213ce83b29a3a8b930e55cd201
     		}
     		
     		$jugador2[]=calcularResultado($jugador2);
