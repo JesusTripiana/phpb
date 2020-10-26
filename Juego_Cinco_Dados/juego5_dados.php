@@ -51,22 +51,24 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <link href="estilos.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
     
-    table, tr, td{
+    table, tr,td{
      padding: 0 auto;
      margin: 0 auto;
+     height:10px;
+     
     }
     body{
         text-align:center;
         font-size:16px;
     }
     
-    .tamano{
-        font-size:160px;
-       
+    .formato{
+    font-size: 160px; 
+    border:15px solid;
     }
+    
     
     </style>
   </head>
@@ -90,10 +92,10 @@ completarPartida($jugador2);
 ?>
 <p>
 <table>
-    	<tr>
+    	<tr style=" text-align:center">
     		<td>Jugador 1</td>
     		<?php foreach ($jugador1 as $contenido){
-    		      echo '<td class="tamano">'.valorDibujo($contenido).'</td>';    
+    		      echo '<td class="formato" style="border-color:red">'.valorDibujo($contenido).'</td>';    
     		}
     		
     		$jugador1[]=calcularResultado($jugador1);
@@ -106,7 +108,7 @@ completarPartida($jugador2);
     	<tr>
     		<td>Jugador2</td>
     		<?php foreach ($jugador2 as $contenido){
-    		      echo '<td class="tamano">'.valorDibujo($contenido).'</td>';    
+    		      echo '<td style=" font-size: 160px; border:15px solid blue">'.valorDibujo($contenido).'</td>';    
     		}
     		
     		$jugador2[]=calcularResultado($jugador2);
