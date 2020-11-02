@@ -21,5 +21,5 @@ $ciudades = [
 'Suecia' => ["Estocolmo", "Upsala","Gotemburgo","Lund"],
 ];
 // Ejemplo de uso
-echo $paises["España"]["Capital"]; // Muestra Madrid
+//echo $paises["España"]["Capital"]; // Muestra Madrid
 ?>
