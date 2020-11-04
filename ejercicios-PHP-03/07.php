@@ -4,6 +4,8 @@
 	<title>Datos del Pais</title>
 </head>
 <body> 
+<h1>Ejercicio 7</h1>
+	<hr>
 <?php 
 	include_once 'infoPaises.php';
 

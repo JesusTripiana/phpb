@@ -4,7 +4,8 @@
 <title>Paises y ciudades</title>
 </head>
 <body> 
-
+<h1>Ejercicio 6</h1>
+	<hr>
 <?php 
 // Incluyo infoPaises.php 
 include_once 'infoPaises.php';
