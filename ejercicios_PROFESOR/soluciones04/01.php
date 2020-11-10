@@ -22,21 +22,21 @@
 
 		<div id="content">
 <?php 
-
+ // creo array asociativo de usuarios y contraseñas 
 $tusuarios = [ 'pepe' => '1234', 
                "luis" => "siul", 
                "admin"=> "admin"];
 
-if (empty($_REQUEST['nombre']) ||  !isset($_REQUEST['clave'])){
+if (empty($_REQUEST['nombre']) ||  !isset($_REQUEST['clave'])){ // si esta vacio el nombre y no existe la clave
     echo " Error: falta valores introducir los valores de usuario y contraseña.<br> ";
-    echo " <button onclick='window.history.back();'>Volver</button> ";
+    echo " <button onclick='window.history.back();'>Volver</button> "; // Boton que mediante JavaScript vuelve a la pagina anterior
     exit;
 }
 // PELIGRO: No controlo la seguridad de las entradas
 $usuario = $_REQUEST['nombre'];
 $clave   = $_REQUEST['clave'];
 
-if ( array_key_exists($usuario, $tusuarios) &&  $tusuarios[$usuario] == $clave ){
+if ( array_key_exists($usuario, $tusuarios) &&  $tusuarios[$usuario] == $clave ){ // si existe la clave usuario en el array Y en el array(usuario) es igual a la clave
     echo " Bienvenido $usuario al sistema ";
     }
     else {

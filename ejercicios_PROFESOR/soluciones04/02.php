@@ -48,14 +48,14 @@ function imprimirConFormato($formato,$valor)
 
 // Si fuera por POST podia chequear $_SERVER['REQUEST_METHOD'] == 'POST'
 
-if (isset($_GET["operacion"])) {
+if (isset($_GET["operacion"])) { // si existe 
     $num1 = $_REQUEST['num1'];
     $num2 = $_REQUEST['num2'];
     $operacion = $_REQUEST['operacion'];
     $formato = $_REQUEST['formato'];
     
     $error =false;
-    if ( ! is_numeric ( $num1 ) || !is_numeric ( $num2 ) ){
+    if ( ! is_numeric ( $num1 ) || !is_numeric ( $num2 ) ){ // SI cualquiera de las 2 variables no son numericas
         $error = true;
         $msg = " Error: los valores introducidos no son numéricos.";
     }
@@ -82,8 +82,8 @@ if (isset($_GET["operacion"])) {
 <script>
 // No se puede borrar con el reset si tiene value fijados 
 function borrarvalores(){
-    document.getElementsByName('num1').value = "";
-    document.getElementsByName('num2').value = "";
+    document.getElementsByName('num1').value = "";   // forma de eliminar los valores de un campo del formulario con JavaScript
+    document.getElementsByName('num2').value = "";   // forma de eliminar los valores de un campo del formulario con JavaScript
 }
 </script>
 <body>
@@ -94,8 +94,8 @@ function borrarvalores(){
 
 	<div id="content">
 	<form>
-	<!--  Incluyo código PHP para conservar el valor recibido por en $_POST -->
-	Nº1:<input type="text" name="num1" size=10 value="<?=isset($num1)?$num1:''?>"> 
+	<!--  Incluyo código PHP para conservar el valor recibido por $_POST -->
+	Nº1:<input type="text" name="num1" size=10 value="<?=isset($num1)?$num1:''?>">  <!-- si existe num1, se lo asigno a value, sino (pongo 1 espacio) -->
 	<br>
 	Nº2:<input type="text" name="num2" size=10 value="<?=isset($num2)?$num2:''?>">
 	<br>
@@ -110,11 +110,11 @@ function borrarvalores(){
 	<fieldset>
 	<!-- Por defecto es decimal -->
 	<input type="radio" name="formato" value="dec" 
-	    <?=(!isset($formato) || $formato =="dec")? "checked='checked'":""?> >Decimal 
+	    <?=(!isset($formato) || $formato =="dec")? "checked='checked'":""?> >Decimal  <!-- SI NO existe $formato O $formato -->
 	<input	type="radio" name="formato" value="bin"
-	    <?=(isset($formato)  && $formato =="bin")? "checked='checked'":""?> >Binario 
+	    <?=(isset($formato)  && $formato =="bin")? "checked='checked'":""?> >Binario  <!-- SI existe $formato Y $formato bin -->
 	<input type="radio" name="formato" value="hex"
-        <?=(isset($formato)  && $formato =="hex")? "checked='checked'":""?> >Hexadecimal<br>
+        <?=(isset($formato)  && $formato =="hex")? "checked='checked'":""?> >Hexadecimal<br>  <!-- SI existe $formato Y $formato hex -->
 	</fieldset>
 	<input type="reset" value=" borrar con reset ">
 	</form>

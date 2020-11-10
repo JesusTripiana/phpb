@@ -15,7 +15,7 @@
 		</div>
 
 		<div id="content">
-		<?php  if ($_SERVER['REQUEST_METHOD'] == "GET") { ?>
+		<?php  if ($_SERVER['REQUEST_METHOD'] == "GET") { ?> <!-- si es metodo GET muestra el formulario -->
 			<form method="post" name="datos" size=15>
 				Nombre: &nbsp; <input name="nombre"><br> Apellidos: <input
 					name="apellidos" size=30> <br> Edad: <select name="edad">
@@ -27,7 +27,7 @@
 					<br> Sexo: 
 					<input name="sexo"  value="hombre" type=radio  checked="checked">Hombre &nbsp;
 					<input name="sexo"  value="mujer"  type=radio>Mujer <br>
-					<br> Hobbies:<br>
+					<br> Hobbies:<br> <!-- Los HOBBIES se procesan como array, ya que se puede seleccionar 0, 1 o todos -->
 					<input name="hobbies[]" value="la lectura" type="checkbox"> lectura<br>
 				    <input name="hobbies[]" value="ver la tele" type="checkbox">ver la tele<br>
 				    <input name="hobbies[]" value="hacer deporte" type="checkbox">hacer deporte <br>
@@ -35,7 +35,7 @@
 				<button>Enviar</button>
 			</form>
 		<?php }
-		     else {
+		     else { // si no es metodo GET procesas el formulario
 		     $nombre = limpiarEntrada($_POST["nombre"]);
 		     $apellidos = limpiarEntrada($_POST["apellidos"]); 
 		     $msg = ($_POST['sexo'] == "hombre" )?"Bienvenido":"Bienvenida";
@@ -71,7 +71,7 @@
 	</div>
 <hr>$edad = $_POST['edad'];
 <?php 
-// Función para limpiar un valor
+// Función para limpiar un valor  IMPORTANTE ya que es una primera criba de informacion.
 function limpiarEntrada(string $entrada):string{
     $salida = trim($entrada); // Elimina espacios antes y después de los datos
     $salida = stripslashes($salida); // Elimina backslashes \

@@ -1,7 +1,16 @@
+<!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="UTF-8">
+	</head>
 	<body>
-		<table width="250">
-		
+		<div >
+			<div >
+				<h1>Procesando El Formulario</h1>
+			</div>
+
+		<div >
+		<table>
 
 	<?php 
         $datosAcceso = array('pepe'=>1234, 'manolo'=>'manolo', 'luis' => 4321);
@@ -21,7 +30,7 @@
                 }
              }
             if ($usuaEncontrado && $paswEncontrado){
-                 echo "<h1 align='center'> Bienvenido $usuario </h1>";
+                 echo "<h1 align='center'> Bienvenido al sistema $usuario </h1>";
             }
             else{
                  $error = "Usuario o password incorrectos. Vuelva a introducirlos.";
@@ -33,7 +42,7 @@
    			 <form action="01.php" method="post">
     		<tr> <td>Usuario:</td><td><input type="text" name="usr" size="14" maxlength="12"></td></tr>
    			<tr><td>Password:</td><td><input type="password" name="pwd" size="14" maxlength="12"></td></tr>
-    		<tr><td colspan="2" align="center"><input type="submit" value="Validar"></td></tr>
+    		<tr><td colspan="2" align="center"><input type="submit" value="Entrar"></td></tr>
     
    <?php if (isset($error)){
         echo '<tr><td colspan="2" align="center">'.$error.'</tr></td>';
@@ -43,6 +52,9 @@
     
 	<?php }?>
  
-		</table>
+				</table>
+			</div>
+		</div>
 	</body>
 </html>
+

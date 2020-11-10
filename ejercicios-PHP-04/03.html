@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="estilos.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="align">
+
+  <div class="grid">
+
+    <div id="login">
+
+      <h2><span class="fontawesome-lock"></span>Formulario</h2>
+
+      <form  autocomplete="on" action="03.php">
+
+        <fieldset>
+				<p><label for="numero1"> NUMERO 1 (number):</label></p>
+          		<p><input type="number" name="numero1" value="50"/></p>
+          		<p><label for="numero2"> NUMERO 2 (range [10-100]):</label></p>
+				<p>10 &nbsp &nbsp <input type="range" name="numero2"  min="10" max="100" value="50"/>&nbsp &nbsp100</p>
+	           
+	            <p><label for="estacion">Estaciones (list):</label></p>
+				<p><input list="estaciones" name="estacion"> </p> <!-- Forma de generar un cuadro de texto con una lista de datos auxiliar por defecto  -->
+				<datalist id="estaciones">
+					<option value="Primavera">
+					<option value="Verano">
+					<option value="Otoño">
+					<option value="Invierno">
+				</datalist>
+				<p><label for="colorFavorito"> Color favorito (COLOR): </label></p>
+				<p><input type="color"name="colorFavorito"> </p>
+				 <p><label for="busca"> Buscar (search): </label></p>
+				 <p><input type="search" name="busca"> </p>
+				 <p><label for="nombre"> Nombre (text) : </label></p>
+				 <p><input type="text" name="nombre"> </p>
+				 <p><label for="apellido"> Apellido (text):</label></p>
+				 <p><input type="text" name="apellido"> </p>
+				 <p><label for="email">  E-mail (email): </label></p>
+				 <p><input type="email" name="email" autocomplete="off"> </p>
+				 <p><label for="fecha"> Fecha de nacimiento: </label></p>
+				 <p><input type="date" name="fecha"></p> 
+				 <p><label for="edad"> Edad (number)(de 0 a 150): </label></p>
+				 <p><input type="number" name="edad" min="0" max="150"> </p>
+				 <p><label for="paginaPersonal"> Página personal (url): </label></p>
+				 <p><input type="url" name="paginaPersonal"> </p>
+				 <p><label for="horaEntrada"> Horario: De </label></p>
+				 <p><input type="time" name="horaEntrada"></p>
+				 <p><label for="horaSalida"> a </label> </p>
+				 <p><input type="time" name="horaSalida"></p>
+				 <br /> 
+				
+				 <br /> <input type="submit">
+
+        </fieldset>
+
+      </form>
+
+    </div>
+
+  </div>
+</body>
+</html>

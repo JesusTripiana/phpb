@@ -43,7 +43,7 @@
 		} else {
 		    $publicidad= 'NO publicidad';
 		}
-		// Array de checkbox
+		// ARRAY de checkbox
 		if (isset($_REQUEST['cbIdioma'])) {
 		    $tablaIdiomas = $_REQUEST['cbIdioma'];
 		    
@@ -58,7 +58,7 @@
 		    }
 		}
 		 
-		 if (!empty($_REQUEST['txaComentarios'])) {
+		 if (!empty($_REQUEST['txaComentarios'])) { // si no esta vacio.
 		     $comentarios= $_REQUEST['txaComentarios'];
 		 }
 		 
