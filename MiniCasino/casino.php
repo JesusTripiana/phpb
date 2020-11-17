@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Minicasino</title>
+<title>Casino</title>
 </head>
 <body>
 <?php
@@ -14,7 +14,7 @@ if ( isset( $_COOKIE['vecesVisitado'])){
 if (! isset($_SESSION['saldo'])) { //disponible
     if ( empty($_POST['importeInicial'])) {
         ?>
-        <h1> BIENVENIDO AL CASINO</h1> <br>
+        <h2> BIENVENIDO AL CASINO</h2> <br>
         Esta es su <?= $cantidadVisitas ?>º visita.<br>
         <form method="post">
 		Introduzca el dinero con el que desea jugar:
