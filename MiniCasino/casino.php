@@ -81,8 +81,8 @@ Cantidad a apostar:<input name="cantidad" type="number"> <br>
 Tipo de apuesta: 
 <input  type="radio"   name="apuesta" value="Par" checked='checked'> Par
 <input  type="radio"   name="apuesta" value="Impar"> Impar <br><br>
-<button name='jugar' value='jugar' > Apostar cantidad </button>
-<button name='terminar'   value='terminar'   > Abandonar el Casino </button>
+<button name="jugar" value="jugar" > Apostar cantidad </button>
+<button name="terminar"   value="terminar"   > Abandonar el Casino </button>
 </form>
 
 </body>
