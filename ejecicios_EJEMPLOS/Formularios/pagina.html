@@ -1,0 +1,32 @@
+<html>
+	<body>
+		<form name="f1" action="mostrar.php"  method ="POST">
+			Nombre:<input type="text" name="c1" size="10">
+			<input type="hidden" name="c2" value="10">
+			Password:<input type="password" name="c3"><br>
+			
+			<input type="radio" name="sexo" value="H"> Hombre
+			<input type="radio" name="sexo" value="M" checked> Mujer<br>
+			
+			<input type="checkbox" name="ck1" value="G"> Garaje
+			<input type="checkbox" name="ck2" value="P"> Piscina<br><br>
+			
+			<textarea name="nota" cols="50" rows="4"></textarea><br>
+			
+			<select name="color">
+				<option value="rojo" selected> Rojo
+				<option value="verde"> Verde
+			</select> <br>
+			
+			<select multiple size="3" name="idiomas[]">
+				<option value="ingles" selected> Ingles
+				<option value="frances"> Frances
+				<option value="aleman"> Aleman
+			</select><br>
+			
+			<input type="submit" name="b1" value="Aceptar">
+			<input type="submit" name="b2" value="Enviar">
+			
+		</form>
+	</body>
+</html>
