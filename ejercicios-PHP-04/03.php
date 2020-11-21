@@ -1,6 +1,7 @@
+<pre>
 <?php
   var_dump($_REQUEST);
-  print "<hr><pre>";
+    echo "<hr>";
   print_r($_REQUEST);
-  print "</pre>\n";
 ?>
+</pre>
