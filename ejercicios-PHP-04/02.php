@@ -35,10 +35,10 @@
 		    $resultado=0;
 		    switch ($formato){
 		        case "bin":
-		          $resultado = decbin($valor);
+		          $resultado = decbin($valor); // pasa de decimal a binario
 		          break;
 		        case "hex":
-		          $resultado = dechex($valor);
+		          $resultado = dechex($valor); // pasa de decimal a hexadecimal
 		          break;
 		        default:
 		          $resultado = $valor;
@@ -55,9 +55,9 @@
 		    $formato = $_GET['formato'];
 		    
 		    $error = false;
-		    if ( !is_numeric ($num1) || !is_numeric ($num2) ){
+		    if ( !is_numeric ($num1) || !is_numeric ($num2) ){ // si alguno de los campos NO son numericos
 		        $error = true;
-		        $msg = "Alguno de los campos no es numerico.";
+		        $msg = "Alguno de los campos introducidos no es numerico.";
 		    }
 		    
 		    if ($num2 == 0 && $operador == '/'){
@@ -65,9 +65,9 @@
 		        $msg = 'Division por 0, no se puede realizar.';
 		    }
 		    
-		    if (!$error){
-		        $resultadoOp = calcularResultado($num1,$num2,$operador);
-		        $resultadoFinal = calcularFormato($resultadoOp,$formato);
+		    if (!$error){ // si no existe el error
+		        $resultadoOp = calcularResultado($num1,$num2,$operador); // calcula el resultado
+		        $resultadoFinal = calcularFormato($resultadoOp,$formato); // Le da el formato indicado
 		        $msg =  "El resultado es: ".$resultadoFinal;
 		    }
 		}
@@ -77,37 +77,39 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		<div>
-			<div >
-				<h1>Calculadora</h1>
-			</div>
-		<div >
-		<table width="400">
+<meta charset="UTF-8">
+<link href="default.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="align">
+		<div class="grid">
+			<div id="login">
+			<h2><span class="fontawesome-lock"></span>Calculadora</h2>
+		
 			<form action="02.php" method="get">
-				<tr><td>N° 1</td><td><input type="text" name="num1" size="6" value="<?=isset($num1)?$num1:''?>"> </td></tr> <!-- si existe num1, se lo asigno a value, sino (pongo 1 espacio) -->
-				<tr><td>N° 2</td><td><input type="text" name="num2" size="6" value="<?=isset($num2)?$num2:''?>"></td></tr>
-				<tr><td></td></tr>
-				<tr><td colspan="3" align="center">
-					<button name='operacion' value='+'> +</button>  <!-- Los BUTTON envian el formulario directamente -->
-					<button name='operacion' value='-'> -</button>
-					<button name='operacion' value='*'> *</button>
-					<button name='operacion' value='/'> /</button>
-				</td></tr>
-				<tr><td colspan="2" align="center">
-					<input type="radio" name="formato" value="dec" 
-					<?=(!isset($formato) || $formato =="dec")? "checked='checked'":""?> > Decimal </td>  <!-- Preguntas secuenciales para la asignacion de valores al CHECKED -->
-					<td><input type="radio" name="formato" value="hex"
-					<?=(isset($formato) && $formato =="hex")? "checked='checked'":""?> > Hexadecimal </td>
-					<td><input type="radio" name="formato" value="bin"
-					<?=(isset($formato) && $formato =="bin")? "checked='checked'":""?> > Binario </td>
-				</tr>
-				</form>
-				</table>
-				<?= isset($msg)?$msg:""?><br>
-			</div>
-		</div>
+			<fieldset>
+				 
+				<p><label for="num1">N° 1</label></p>
+				<p><input type="text" name="num1" size="6" value="<?=isset($num1)?$num1:''?>"></p> <!-- si existe num1, se lo asigno a value, sino (pongo 1 espacio) -->
+				<p><label for="num2">N° 2</label></p>
+				<p><input type="text" name="num2" size="6" value="<?=isset($num2)?$num2:''?>"></p>
+			
+				<p style="display:inline-block"><button name='operacion' value='+'> +</button></p>  <!-- Los BUTTON envian el formulario directamente -->
+				<p style="display:inline-block"><button name='operacion' value='-'> -</button></p>
+				<p style="display:inline-block"><button name='operacion' value='*'> *</button></p>
+				<p style="display:inline-block"><button name='operacion' value='/'> /</button></p>
+				
+				<p><input type="radio" name="formato" value="dec" 
+				<?=(!isset($formato) || $formato =="dec")? "checked='checked'":""?> > Decimal </p>  <!-- Preguntas secuenciales para la asignacion de valores al CHECKED -->
+				<p><input type="radio" name="formato" value="hex"
+				<?=(isset($formato) && $formato =="hex")? "checked='checked'":""?> > Hexadecimal </p>
+				<p><input type="radio" name="formato" value="bin"
+				<?=(isset($formato) && $formato =="bin")? "checked='checked'":""?> > Binario </p>
+			
+				<?= isset($msg)?"<p>".$msg."</p>":""?><br>
+			</fieldset>
+			</form>
+			</div> <!-- end login -->
+
+  		</div>
 	</body>
 </html>

@@ -1,4 +1,4 @@
-
+<pre>
 <?php
 $matriz=array('lunes','martes','miércoles','jueves','viernes','sábado','domingo');
 echo count($matriz).'<br><br>'; // devulve el numero de elementos del array
@@ -24,6 +24,7 @@ echo array_push($matriz, 'domingo').'<br><br>'; // inserta el elemento en la ult
 var_dump($matriz);
 ?>
 <hr>
+ARRAY_UNSHIFT <br>
 <?php 
 echo array_unshift($matriz, 'lunes').'<br><br>'; // inserta el elemento en la primera posicion del array y devuelve la cantidad de elementos
                                                  // solo permite elementos con KEY numerica

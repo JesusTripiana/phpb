@@ -98,6 +98,9 @@ input {
 	border-radius: 3px;
 }
 
+
+
+
 #login fieldset input[type="email"], #login fieldset input[type="password"],#login fieldset input[type="text"],
  #login fieldset input[list], #login fieldset input[type="search"],  #login fieldset input[type="number"],
  #login fieldset input[type="url"],#login fieldset input[type="date"]{
@@ -116,6 +119,9 @@ input {
 	width: 50%;
 }
 
-#login fieldset input[type="submit"]:hover {
+
+
+#login fieldset input[type="submit"]:hover{
 	background: #28ad63;
 }
+

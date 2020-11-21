@@ -21,19 +21,20 @@
         }
         return $valorMin;
     }
-    
+    // La MODA
     function valorMasRepetido ($tabla):int {
-        $maxrepe = 0;
-        $valor =0;
+        $maxrepe = 0; //cantidad maxima de repeticiones
+        $valor =0; // valor inicial
         for ($i = 0; $i < sizeof($tabla); $i++) {
             $veces = 0;
             for ($j = 0; $j < sizeof($tabla); $j++) {
                 if ($tabla[$i] == $tabla[$j]) {
-                    $veces++;
+                    $veces++; // repeticiones de 1 numero concreto
                 }
             }
-            if ($veces > $maxrepe) {
-                $valor = $tabla[$i];
+            if ($veces > $maxrepe) { // si las repeticiones de 1 numero concreto son mayores que la cantidad maxima de repeticiones
+                $maxrepe = $veces;
+                $valor = $tabla[$i]; // asignacion del numero mas repetido
             }
         }
         return $valor;

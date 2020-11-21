@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		<div >
-			<div >
-				<h1>Procesando El Formulario</h1>
-			</div>
-
-		<div >
-		<table>
+<head>
+<meta charset="UTF-8">
+<link href="default.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="align">
+		<div class="grid">
+			<div id="login">
+			
 
 	<?php 
         $datosAcceso = array('pepe'=>1234, 'manolo'=>'manolo', 'luis' => 4321);
@@ -30,31 +27,21 @@
                 }
              }
             if ($usuaEncontrado && $paswEncontrado){
-                 echo "<h1 align='center'> Bienvenido al sistema $usuario </h1>";
+                 echo '<h2><span class="fontawesome-lock"></span>Formulario Procesado</h2>';
+                 echo "<fieldset><p> Bienvenido al sistema $usuario <p></fieldset>";
             }
             else{
                  $error = "Usuario o password incorrectos. Vuelva a introducirlos.";
             }
         }
 
-        if ($_SERVER['REQUEST_METHOD']== 'GET' || isset($error)){ ?>
-    
-   			 <form action="01.php" method="post">
-    		<tr> <td>Usuario:</td><td><input type="text" name="usr" size="14" maxlength="12"></td></tr>
-   			<tr><td>Password:</td><td><input type="password" name="pwd" size="14" maxlength="12"></td></tr>
-    		<tr><td colspan="2" align="center"><input type="submit" value="Entrar"></td></tr>
-    
-   <?php if (isset($error)){
-        echo '<tr><td colspan="2" align="center">'.$error.'</tr></td>';
-    }?>
-    
-    	</form>
-    
-	<?php }?>
- 
-				</table>
-			</div>
-		</div>
+        if ($_SERVER['REQUEST_METHOD']== 'GET' || isset($error)){ 
+                include_once '01_1.php';
+        }
+         ?>
+ 			</div> <!-- end login -->
+
+  		</div>
 	</body>
 </html>
 

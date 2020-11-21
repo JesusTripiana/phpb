@@ -4,25 +4,24 @@
         $num = 0;
         while ($repetido){
             $num=random_int(1,49);
-            $repetido = comprobarRepetido($num,$numeros);
+            $repetido = in_array($num, $numeros); // funcion que indica si existe 1 valor dado dentro de un array
         }
        return $num;
     }
     
-    function comprobarRepetido(int $num, array $valores):bool {
-        $esta=false;
-        foreach ($valores as $valor){
-            if($valor == $num){
-                $esta=true;
-            }
-        }
-        return $esta;
-    }
-?>
+//     function comprobarRepetido(int $num, array $valores):bool {
+        
+// //          FORMA MANUAL DE COMPROBAR
+// //         $esta=false;
+// //         foreach ($valores as $valor){
+// //             if($valor == $num){
+// //                 $esta=true;
+// //             }
+// //         }
+// //         return $esta;
+//            }
 
-
-
-<?php 
+    
 define ('PARTIDA',6);
 $bonoloto =[];
 for ($i=0;$i<PARTIDA;$i++){

@@ -8,7 +8,7 @@
 	<h4> Almenas de *</h4>
 	<code>
 	<?php 
-	   $almenas=random_int(1, 7);
+	   $almenas=random_int(1, 10);
 	   for($row=0;$row<2;$row++){
 	           for($col=0;$col<$almenas*5+1;$col++){
 	               if($row==0 || $row==1){
