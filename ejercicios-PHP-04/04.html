@@ -3,6 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <link href="estilos.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+
+ #login fieldset input[type="submit"], #login fieldset input[type="reset"] {
+	background: #33cc77;
+	color: #fff;
+	display: inline-block;
+	margin: 0 auto;
+	padding: 4px 0;
+	width: 50%;
+}
+
+#login fieldset input[type="submit"]:hover{
+	background: #28ad63;
+}
+
+#login fieldset input[type="reset"]:hover{
+	background: #28ad63;
+}
+</style>
 </head>
 <body class="align">
 
@@ -18,7 +37,7 @@
         	<p><b>CAMPOS DE TEXTO:</b></p>
         	<p><label for="nombre"> Nombre:</label></p>
           	<p><input type="text" name="nombre"/></p>
-          	<p><label for="pwd"> Apellido:</label></p>
+          	<p><label for="pwd"> Password:</label></p>
           	<p><input type="password" name="pwd"/></p>
           	<hr>
           	<p><b>RADIO:</b></p>
@@ -34,16 +53,42 @@
           	<input type="checkbox" name="publicidad" value="publi"/></p>
           	<p><b>MULTI CHECKBOX:</b></p>
           	<p><label> Ingles</label>
-          	<input type="checkbox" name="idiomas[]" value="ingles"/>
-          	&nbsp;&nbsp;<label> Frances</label>
-          	<input type="checkbox" name="idiomas[]" value="frances"/>
-          	&nbsp;&nbsp;<label> Aleman</label>
-          	<input type="checkbox" name="idiomas[]" value="aleman"/></p>
+          	<input type="checkbox" name="idiomas[]" value="Ingles"/>
+          	&nbsp;&nbsp;
+          	<label>Frances</label>
+          	<input type="checkbox" name="idiomas[]" value="Frances"/>
+          	&nbsp;&nbsp;
+          	<label>Aleman</label>
+          	<input type="checkbox" name="idiomas[]" value="Aleman"/></p>
           	<hr>
           	<p><b>SELECT:<br>
           		  Simple:</b></p>
           	<p><label>Año de finalización de estudios:</label>
-          	</p>
+          	<select name="selAnioFinEstudios">
+					<option value="2015">2015</option>
+					<option value="2016" selected="selected">2016</option>
+					<option value="2017">2017</option>
+					<option value="2018">2018</option>
+					<option value="2019">2019</option>
+					<option value="2020">2020</option>
+				</select></p>
+			<p><b>Multiple:</b></p>
+			<p><label>Ciudades:</label>
+			<select name="codigosPostales[]" multiple="multiple">
+			<option value="40" selected="selected">Asturias</option>
+			<option value="41">Gerona</option>
+			<option value="42">Madrid</option>
+			<option value="43" selected="selected">Sevilla</option>
+			<option value="44">Orense</option>
+			</select></p>
+			<hr>
+			<p><b>TEXTAREA:</b></p>
+			<p><label>Escriba sus comentarios:</label>
+			<textarea name="textoComentarios" rows="5" cols="30" placeholder="Introduzca sus opiniones"></textarea></p>
+			<hr>
+			<p><b>BOTONES:</b></p>
+			<p><input type="reset"  value="Resetear Formulario"/></p>
+			<p><input type="submit"  value="Enviar Formulario"/></p>
         </fieldset>
      
         </form>
