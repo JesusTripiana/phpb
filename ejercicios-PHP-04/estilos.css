@@ -99,8 +99,6 @@ input {
 }
 
 
-
-
 #login fieldset input[type="email"], #login fieldset input[type="password"],#login fieldset input[type="text"],
  #login fieldset input[list], #login fieldset input[type="search"],  #login fieldset input[type="number"],
  #login fieldset input[type="url"],#login fieldset input[type="date"]{
@@ -111,7 +109,7 @@ input {
 }
 
 #login fieldset input[type="submit"] {
-	background: black; /*#33cc77*/
+	background: #33cc77;
 	color: #fff;
 	display: block;
 	margin: 0 auto;
@@ -119,11 +117,7 @@ input {
 	width: 50%;
 }
 
-#login fieldset input[type="submit"]:hover{
-	background: black; /*#28ad63*/
-}
-
-#login fieldset input[type="reset"]:hover{
+#login fieldset input[type="submit"]:hover {
 	background: #28ad63;
 }
 

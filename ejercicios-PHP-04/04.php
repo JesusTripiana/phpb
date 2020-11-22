@@ -61,7 +61,7 @@
         ?>
         
         <p>Nombre: <?= $nombre?></p>
-        <p>Contrasena: <?= $clave?></p>
+        <p>Clave: <?= $clave?></p>
         <p>Semaforo: <?= $color?></p>
         <p>Publicidad: <?= $publicidad?></p>
         <p>Idiomas: <?php 
