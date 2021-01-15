@@ -5,25 +5,28 @@
 </head>
 <body>
 <div style="text-align:center"> 
-<?php 
-if(isset($_GET['nuevatarjeta'])){ // si existe una nueva tarjeta modificamos el valor del COOKIE
-    $tarjeta = $_GET['nuevatarjeta'];
-    setcookie('tipotarjeta',$tarjeta,time()+60); // Nombre,Valor,tiempo de validacion de cookie  CREACION DE LA COOKIE
-    
-}else{
-    if(isset($_COOKIE["tipotarjeta"])){ // si no, si existe ya el COOKIE se lo asignamos a la variable del programa
-        $tarjeta = $_COOKIE["tipotarjeta"];
-    }
-}
-if(isset($tarjeta)){
-    echo '<h2> La forma de pago es:</h2><br>';
-    echo "<img src='imagenes/$tarjeta.gif'/>";
-}else {
-    echo " <H2> NO TIENE FORMA  DE PAGO ASIGNADA ES</H2> </br> ";
-    echo "<br><br>";
-}
 
-?>
+	<?php 
+	   session_start();
+	   
+	   if (isset($_GET['nuevatarjeta'])){ // si la tarjeta es nueva cambio los valores de la sesion
+	       $tarjetaSelec = $_GET['nuevatarjeta'];
+	       $_SESSION['tarjeta'] = $tarjetaSelec;
+	   }else{ // sino, asigno el valor de la sesion a la variable.
+	       if (isset($_SESSION['tarjeta'])){
+	           $tarjetaSelec= $_SESSION['tarjeta'];
+	       }
+	   }
+	   
+	   if (isset($_SESSION['tarjeta'])){?>
+	   		<h2>FORMA DE PAGO SELECCIONADA</h2><br>
+	   		<img alt="Modo de pago" src="imagenes/<?=$tarjetaSelec ?>.gif"> 
+	   <?php }else{?>
+	   			<h2>SELECCIONE FORMA DE PAGO </h2><br>
+	<?php }?>
+
+
+
 
 <h2>SELECCIONE UNA NUEVA TARJETA DE CREDITO </h2><br> 
 <a href="?nuevatarjeta=cashu"><img  src='imagenes/cashu.gif' /></a>&nbsp; 

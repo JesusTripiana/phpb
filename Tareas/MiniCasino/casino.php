@@ -7,12 +7,12 @@
 <?php
 session_start();
 $cantidadVisitas = 1;
-if ( isset( $_COOKIE['vecesVisitado'])){
+if ( isset( $_COOKIE['vecesVisitado'])){ // se comprueba siempre al principio
     $cantidadVisitas = $_COOKIE['vecesVisitado'];
 }
 
-if (! isset($_SESSION['saldo'])) { //disponible
-    if ( empty($_POST['importeInicial'])) {
+if (! isset($_SESSION['saldo'])) { //Si la variable SALDO no existe y la variable IMPORTEINICIAL esta vacia
+    if ( empty($_POST['importeInicial'])) { // primera visita
         ?>
         <h2> BIENVENIDO AL CASINO</h2> <br>
         Esta es su <?= $cantidadVisitas ?>º visita.<br>
@@ -23,8 +23,8 @@ if (! isset($_SESSION['saldo'])) { //disponible
 		</body>
 		</html>
         <?php
-        exit();
-    } else {
+        exit(); // muestras formulario y finalizas SCRIPT 
+    } else { // se ejecuta cuando IMPORTEINICIAL tiene algun valor
     $_SESSION['saldo'] = $_POST['importeInicial'];
     header("Refresh:0");
     }
@@ -39,7 +39,7 @@ if (isset($_POST["jugar"])) {
         $numSecreto = random_int(1, 100);
         $resultado = esParImpar($numSecreto);
         echo " RESULTADO DE LA APUESTA : " . $resultado . "<br>";
-        $resultadoJuego = calcularGanador($apuesta, $resultado);
+        $resultadoJuego = calcularGanador($apuesta, $resultado); // comparo la opcion del usuario y la opcion aleatoria
         echo $resultadoJuego."<br>";
         if ($resultadoJuego == "Ganaste"){
             $_SESSION["saldo"] = $_SESSION["saldo"] + $cantidad;
