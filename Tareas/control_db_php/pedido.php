@@ -1,5 +1,5 @@
 <?php 
-class cliente {
+class pedido {
     
     private $numped;
     private $cod_cliente;
