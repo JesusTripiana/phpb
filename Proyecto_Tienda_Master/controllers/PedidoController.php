@@ -34,7 +34,7 @@ class pedidoController{
 				
 				if($save && $save_linea){
 					$_SESSION['pedido'] = "complete";
-					unset($_SESSION['carrito']); // Modificado por Alberto (Hace que cuando se salva un pedido se elimine el contenido del carrito y se pueda hacer otro pedido diferente)
+					unset($_SESSION['carrito']); // Modificado por ALBERTO (Hace que cuando se salva un pedido se elimine el contenido del carrito y se pueda hacer otro pedido diferente)
 				}else{
 					$_SESSION['pedido'] = "failed";
 				}
