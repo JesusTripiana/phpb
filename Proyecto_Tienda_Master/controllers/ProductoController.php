@@ -28,7 +28,7 @@ class productoController{
 		Utils::isAdmin();
 		
 		$producto = new Producto();
-		$productos = $producto->getAll();
+		//$productos = $producto->getAll();
 		
 		require_once 'views/producto/gestion.php';
 	}

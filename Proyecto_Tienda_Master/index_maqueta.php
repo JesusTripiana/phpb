@@ -2,14 +2,16 @@
 <html lang="es">
 	<head>
 		<meta charset="utf-8" />
-		<title>Tienda de Camisetas</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+   		<link rel="stylesheet" href="assets/css1/bootstrap.min.css" />
 		<link rel="stylesheet" href="assets/css/styles.css" />
+		<title>Tienda de Camisetas</title>
 	</head>
 	<body>
 		<div id="container">
 			<!-- CABECERA -->
-			<header id="header">
-				<div id="logo">
+			<header class="row" id="header">
+				<div class="col-12"id="logo">
 					<img src="assets/img/camiseta.png" alt="Camiseta Logo" />
 					<a href="index.php">
 						Tienda de camisetas
@@ -53,7 +55,7 @@
 							<input type="email" name="email" />
 							<label for="password">Contraseña</label>
 							<input type="password" name="password" />
-							<input type="submit" value="Enviar" />
+							<input type="submit" class="btn btn-outline-danger" value="Enviar" />
 						</form>
 						
 						<ul>
@@ -98,5 +100,8 @@
 				<p>Desarrollado por Víctor Robles WEB &copy; <?= date('Y') ?></p>
 			</footer>
 		</div>
+	<script src="assets/js/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 	</body>
 </html>

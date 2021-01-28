@@ -89,8 +89,8 @@ class Producto{
 		$this->imagen = $imagen;
 	}
 
-	public function getAll(){
-		$productos = $this->db->query("SELECT * FROM productos ORDER BY id DESC");
+	public function getAll($pagina){ // MODIFICADO Jesus 
+		$productos = $this->db->query("SELECT * FROM productos ORDER BY id DESC LIMIT $pagina,4");
 		return $productos;
 	}
 	
@@ -152,6 +152,17 @@ class Producto{
 			$result = true;
 		}
 		return $result;
+	}
+
+	public function count_row(){ // CREADO Jesus
+		$sql = "SELECT COUNT(*) resu FROM productos";
+		$total = $this->db->query($sql);
+		$fila = $total->fetch_assoc();
+		$numArticulos = intval($fila['resu']);
+		return $numArticulos;
+		// $numPaginas = floor(abs($numArticulos-1)/4+1);  SABER EL NUMERO DE PAGINAS 
+		// quiero mostrar 4 articulos por pagina
+
 	}
 	
 }
