@@ -41,46 +41,38 @@
 	<?php endwhile; ?>
 
 	<tr>
-      <td>Página <?=$_SESSION['pagina']?> de <?=$numPaginas?></td>
+      <td colspan = "2" >Página <?=$_SESSION['pagina']?> de <?=$numPaginas?></td>
       <!-- Primera -->
-      <td>
+      <td colspan = "3">
         <form action="gestion" method="post">
-          <button type="submit" name="pagina" value="Primera">
+          <button type="submit" name="pagina" value="Primera" style = "display:inline-block">
           Primera
           </button>
-        </form>
-      </td>
-      <!-- Anterior -->
-      <td> 
-        <form action="gestion" method="post">
-          <button type="submit" name="pagina" value="Anterior">
+          <button type="submit" name="pagina" value="Anterior" style = "display:inline-block">
            << Anterior
           </button>
-        </form>
-      </td>
-      <!-- Siguiente -->
-      <td>
-        <form action="gestion" method="post">
-          <button type="submit" name="pagina" value="Siguiente">
+        
+          <button type="submit" name="pagina" value="Siguiente" style = "display:inline-block">
 		  Siguiente >>
         </button>
-        </form>
-      </td>
-      <!-- Última -->
-      <td > 
-        <form action="gestion" method="post">
-          <button type="submit" name="pagina" value="Ultima">
+        
+          <button type="submit" name="pagina" value="Ultima" style = "display:inline-block">
 		  Última
           </button>
         </form>
       </td> 
+	  </tr>
+    <tr>
+    <td colspan = "5"> <b>Cantidad de artículos a mostrar</b></td>
+    </tr>
 	  <tr>
-	  <td > 
+      <td colspan = "2"></td>
+      <th > 
         <form action="gestion" method="post">
-		<label for="numArticulos">Mostrar cantidad de artículos</label>
-          <input type="text" name="numArticulos"/>
-          
+          <input type="text" name="numArticulos"/> 
         </form>
-      </td>     
-	  </tr>     
+      </th>
+      <td colspan = "2"></td>
+    </tr>
+   
 </table>
