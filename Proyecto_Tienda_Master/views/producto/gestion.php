@@ -1,34 +1,3 @@
-<?php // modificado Jesus Paginacion
- $numPaginas = floor (abs ($producto->count_row() - 1 ) / 4 + 1 );
- 
-if (!isset($_SESSION['pagina'])){
-	$_SESSION['pagina'] = 1;
-}
-
-if (isset($_POST['pagina'])){
-	$pagina = $_POST['pagina'];
-} else {
-	$pagina = "Primera";
-}
-if ($pagina == "Primera"){
-	$_SESSION["pagina"] = 1;
-}
-
-if (($pagina == "Anterior") && ($_SESSION['pagina'] > 1)){
-	$_SESSION['pagina']--;
-}
-
-if (($pagina == "Siguiente") && ($_SESSION['pagina'] < $numPaginas)){
-	$_SESSION['pagina']++;
-}
-
-if ($pagina == "Ultima"){
-	$_SESSION['pagina'] = $numPaginas;
-}
-
-$productos = $producto->getAll(($_SESSION['pagina'] -1 ) * 4 ); 
-
-?>
 
 <h1>Gestión de productos</h1>
 
@@ -77,8 +46,7 @@ $productos = $producto->getAll(($_SESSION['pagina'] -1 ) * 4 );
       <td>
         <form action="gestion" method="post">
           <button type="submit" name="pagina" value="Primera">
-<!--             <span class="glyphicon glyphicon-step-backward"></span>
- -->           Primera
+          Primera
           </button>
         </form>
       </td>
@@ -86,8 +54,7 @@ $productos = $producto->getAll(($_SESSION['pagina'] -1 ) * 4 );
       <td> 
         <form action="gestion" method="post">
           <button type="submit" name="pagina" value="Anterior">
-<!--            <span class="glyphicon glyphicon-chevron-left"></span>
- -->            << Anterior
+           << Anterior
           </button>
         </form>
       </td>
@@ -96,8 +63,7 @@ $productos = $producto->getAll(($_SESSION['pagina'] -1 ) * 4 );
         <form action="gestion" method="post">
           <button type="submit" name="pagina" value="Siguiente">
 		  Siguiente >>
-<!--             <span class="glyphicon glyphicon-chevron-right"></span>
- -->          </button>
+        </button>
         </form>
       </td>
       <!-- Última -->
@@ -105,8 +71,16 @@ $productos = $producto->getAll(($_SESSION['pagina'] -1 ) * 4 );
         <form action="gestion" method="post">
           <button type="submit" name="pagina" value="Ultima">
 		  Última
-<!--             <span class="glyphicon glyphicon-step-forward"></span>
- -->          </button>
+          </button>
         </form>
-      </td>      
+      </td> 
+	  <tr>
+	  <td > 
+        <form action="gestion" method="post">
+		<label for="numArticulos">Mostrar cantidad de artículos</label>
+          <input type="text" name="numArticulos"/>
+          
+        </form>
+      </td>     
+	  </tr>     
 </table>

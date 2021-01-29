@@ -28,8 +28,49 @@ class productoController{
 		Utils::isAdmin();
 		
 		$producto = new Producto();
-		//$productos = $producto->getAll();
+		//$productos = $producto->getAll(); consulta al modelo ORIGINAL
 		
+		// Intentar hacer esta parte de paginacion generica para poder añadir en 
+		// otras vistas si es necesario
+		
+		if (!isset($_POST["numArticulos"]) && !isset($_SESSION['numFilasMostrar'])){
+			$_SESSION['numFilasMostrar'] = 4;	
+		} elseif (isset($_POST["numArticulos"])){
+			$numFilasMostrar = intval($_POST["numArticulos"]);
+			$_SESSION['numFilasMostrar'] = $numFilasMostrar;
+			var_dump($_SESSION['numFilasMostrar']);
+		}
+		
+		$numPaginas = floor (abs ($producto->count_row() - 1 ) / $_SESSION['numFilasMostrar'] + 1 );
+		
+		if (!isset($_SESSION['pagina'])){
+			$_SESSION['pagina'] = 1;
+		}
+
+		if (isset($_POST['pagina'])){
+			$pagina = $_POST['pagina'];
+		} else {
+			$pagina = "Primera";
+		}
+		if ($pagina == "Primera"){
+			$_SESSION["pagina"] = 1;
+		}
+
+		if (($pagina == "Anterior") && ($_SESSION['pagina'] > 1)){
+			$_SESSION['pagina']--;
+		}
+
+		if (($pagina == "Siguiente") && ($_SESSION['pagina'] < $numPaginas)){
+			$_SESSION['pagina']++;
+		}
+
+		if ($pagina == "Ultima"){
+			$_SESSION['pagina'] = $numPaginas;
+		}
+
+		$productos = $producto->getAll(($_SESSION['pagina'] -1 ) * $_SESSION['numFilasMostrar'] ,
+		$_SESSION['numFilasMostrar'] ); 
+
 		require_once 'views/producto/gestion.php';
 	}
 	
