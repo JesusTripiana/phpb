@@ -20,6 +20,7 @@
 <?php Utils::deleteSession('delete'); ?>
 	
 <table>
+	 <!-- Parte que muestra el contenido de la tabla  -->
 	<tr>
 		<th>ID</th>
 		<th>NOMBRE</th>
@@ -40,6 +41,7 @@
 		</tr>
 	<?php endwhile; ?>
 
+		<!-- Parte donde aparecen los botones de paginacion -->
 	<tr>
       <td colspan = "2" >Página <?=$_SESSION['pagina']?> de <?=$numPaginas?></td>
       <!-- Primera -->
@@ -63,6 +65,8 @@
       </td> 
 	  </tr>
     <tr>
+
+		<!-- Parte donde se indica si se quiere modificar la cantidad de articulos a mostrar-->
     <td colspan = "5"> <b>Cantidad de artículos a mostrar</b></td>
     </tr>
 	  <tr>

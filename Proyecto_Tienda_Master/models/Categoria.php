@@ -26,13 +26,27 @@ class Categoria{
 	}
 
 	public function getAll(){
-		$categorias = $this->db->query("SELECT * FROM categorias ORDER BY id DESC;");
+		  // $categorias =  "SELECT * FROM categorias ORDER BY id DESC";
+		$categorias = $this->db->query("SELECT c.id, c.nombre, COUNT(p.categoria_id) AS modelos FROM categorias c, productos p WHERE c.id = p.categoria_id GROUP BY c.id ORDER BY c.id DESC;");
+		// consulta modificada Jesus
 		return $categorias;
 	}
 	
 	public function getOne(){
 		$categoria = $this->db->query("SELECT * FROM categorias WHERE id={$this->getId()}");
 		return $categoria->fetch_object();
+	}
+
+	public function edit(){
+		$sql = "UPDATE categorias SET nombre = '{$this->getNombre()}' WHERE id = {$this -> id};";
+
+		$save = $this->db->query($sql);
+
+		$result = false;
+		if ($save){
+			$result = true;
+		}
+		return $result;
 	}
 	
 	public function save(){

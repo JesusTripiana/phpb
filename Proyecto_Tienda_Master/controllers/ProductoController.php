@@ -38,7 +38,6 @@ class productoController{
 		} elseif (isset($_POST["numArticulos"])){
 			$numFilasMostrar = intval($_POST["numArticulos"]);
 			$_SESSION['numFilasMostrar'] = $numFilasMostrar;
-			var_dump($_SESSION['numFilasMostrar']);
 		}
 		
 		$numPaginas = floor (abs ($producto->count_row() - 1 ) / $_SESSION['numFilasMostrar'] + 1 );
