@@ -26,12 +26,18 @@ class Categoria{
 	}
 
 	public function getAll(){
-		  // $categorias =  "SELECT * FROM categorias ORDER BY id DESC";
-		$categorias = $this->db->query("SELECT c.id, c.nombre, COUNT(p.categoria_id) AS modelos FROM categorias c, productos p WHERE c.id = p.categoria_id GROUP BY c.id ORDER BY c.id DESC;");
+		   $categoria = $this->db->query("SELECT * FROM categorias ORDER BY id DESC");
+		//$categorias = $this->db->query("SELECT c.id, c.nombre, COUNT(p.categoria_id) AS modelos FROM categorias c, productos p WHERE c.id = p.categoria_id GROUP BY c.id ORDER BY c.id DESC;");
 		// consulta modificada Jesus
-		return $categorias;
+		return $categoria;
 	}
 	
+	public function getModelos(){
+		$categoria = $this->db->query("SELECT categoria_id, COUNT(nombre) AS modelos FROM productos GROUP BY categoria_id ORDER BY categoria_id DESC ;");
+		// consulta modificada Jesus
+		return $categoria;
+	}
+
 	public function getOne(){
 		$categoria = $this->db->query("SELECT * FROM categorias WHERE id={$this->getId()}");
 		return $categoria->fetch_object();

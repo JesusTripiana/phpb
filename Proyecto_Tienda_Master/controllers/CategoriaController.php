@@ -8,7 +8,7 @@ class categoriaController{
 		Utils::isAdmin();
 		$categoria = new Categoria();
 		$categorias = $categoria->getAll();
-		
+		$modelos = $categoria->getModelos();
 		require_once 'views/categoria/index.php';
 	}
 	
@@ -61,8 +61,8 @@ class categoriaController{
 		// 	$categoria->setNombre($_POST['nombre']);
 		// 	$save = $categoria->save();
 		// }
-		if (isset($_POST)){
-			$nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false;
+		if (isset($_POST) && isset($_POST['nombre'])){
+			$nombre = $_POST['nombre'];
 
 			if ($nombre){
 				$categoria = new Categoria();
@@ -70,9 +70,15 @@ class categoriaController{
 
 				if(isset($_GET['id'])){
 					$id = $_GET['id'];
+					$_SESSION['editada'] = 'Noeditado';
 					$categoria->setId($id);
 					
 					$save = $categoria->edit();
+					if ($save){
+						$_SESSION['editada'] = 'editado';
+					}else{
+						$_SESSION['editada'] = 'Noeditado';
+					}
 				}else{
 					$save = $categoria->save();
 				}
