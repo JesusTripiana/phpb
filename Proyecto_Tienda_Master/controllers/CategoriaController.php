@@ -98,5 +98,26 @@ class categoriaController{
 
 		header("Location:".base_url."categoria/index");
 	}
+
+	public function eliminar(){
+		Utils::isAdmin();
+		
+		if(isset($_GET['id'])){
+			$id = $_GET['id'];
+			$categoria = new Categoria();
+			$categoria->setId($id);
+			
+			$delete = $categoria->delete();
+			if($delete){
+				$_SESSION['delete'] = 'complete';
+			}else{
+				$_SESSION['delete'] = 'failed';
+			}
+		}else{
+			$_SESSION['delete'] = 'failed';
+		}
+		
+		header('Location:'.base_url.'categoria/index');
+	}
 	
 }

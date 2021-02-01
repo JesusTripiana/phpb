@@ -4,7 +4,7 @@
 	Crear categoria
 </a>
 
-<?php if(isset($_SESSION['editada'])){
+<?php if(isset($_SESSION['editada'])){ // MOdificado Jesus
 	if(isset($_SESSION['categoria']) && $_SESSION['categoria'] == 'complete' && $_SESSION['editada'] == 'editado'): ?>
 	<strong class="alert_green">La categoria se ha editado correctamente</strong>
 <?php elseif(isset($_SESSION['categoria']) && $_SESSION['categoria'] != 'complete' && $_SESSION['editada'] = 'Noeditado'): ?>	
@@ -44,6 +44,7 @@ else{?>
 		<?php $totalFilas = $modelos->num_rows;
 		$cont=0;
         foreach ($modelos as $mod) {
+			
             $cont++;
             if ($cat->id == $mod["categoria_id"]) {?>
 
