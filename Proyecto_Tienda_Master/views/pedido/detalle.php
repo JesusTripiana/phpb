@@ -14,6 +14,11 @@
 				<input type="submit" value="Cambiar estado" />
 			</form>
 			<br/>
+
+			<h3> Datos del cliente</h3>
+			Identificador: <?= $usr->id ?> <br>
+			Nombre: <?= $usr->nombre." ".$usr->apellidos ?> <br>
+			Email: <?= $usr->email ?> <br><br>
 		<?php endif; ?>
 
 		<h3>Dirección de envio</h3>
@@ -54,6 +59,14 @@
 					</td>
 				</tr>
 			<?php endwhile; ?>
+			<tr>
+				<td colspan = "4">
+				<form action="<?=base_url?>pedido/imprimir" method="POST">
+				<input type="hidden" value="<?=$pedido->id?>" name="pedido_id"/>
+				<input type="submit" value="Imprimir">
+				</form>
+				</td>
+			</tr>
 		</table>
 
 	<?php endif; ?>

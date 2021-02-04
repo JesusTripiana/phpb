@@ -1,5 +1,7 @@
 <?php
 require_once 'models/Pedido.php';
+require_once 'models/Usuario.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 class pedidoController{
 	
@@ -87,6 +89,11 @@ class pedidoController{
 			$pedido->setId($id);
 			$pedido = $pedido->getOne();
 			
+			// sacar datos del usuario 
+			$usuario = new Usuario();
+			$usuario->setId($pedido->usuario_id);
+			$usr = $usuario->getOne();
+
 			// Sacar los poductos
 			$pedido_productos = new Pedido();
 			$productos = $pedido_productos->getProductosByPedido($id);
@@ -124,6 +131,40 @@ class pedidoController{
 		}else{
 			header("Location:".base_url);
 		}
+	}
+		// Ultimas 2 funciones van juntas para la generacion del documento PDF
+	public function imprimir(){
+		Utils::isAdmin();
+
+		if (isset($_POST["pedido_id"])){
+			$mpdf = new \Mpdf\Mpdf();
+			$cadenahtml = $this->detallesImprimir($_POST['pedido_id']);
+			$mpdf->WriteHTML($cadenahtml);
+			$mpdf->Output();
+		}else{
+			header("Location:".base_url);
+		}
+	}
+
+	private function detallesImprimir($id){
+		$pedido = new Pedido();
+		$pedido ->setId($id);
+		$pedido = $pedido->getOne();
+
+		$usuario = new Usuario();
+		$usuario->setId($pedido->usuario_id);
+		$usr = $usuario->getOne();
+
+		$pedidoProductos = new Pedido();
+		$productos = $pedidoProductos->getProductosByPedido($id);
+
+		// gestion del BUFFER 
+		ob_start();
+		require_once 'views/pedido/detallepdf.php';
+		$salida = ob_get_contents();
+		ob_end_clean();
+
+		return $salida;
 	}
 	
 	

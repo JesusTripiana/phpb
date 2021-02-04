@@ -104,6 +104,11 @@ class Usuario{
 		
 		return $result;
 	}
+
+	public function getOne(){
+		$producto = $this->db->query("SELECT * FROM usuarios WHERE id = {$this->getId()}");
+		return $producto->fetch_object();
+	}
 	
 	
 	
