@@ -1,6 +1,9 @@
 <h1>Detalle del pedido</h1><hr>
 
 <?php if (isset($pedido)): ?>
+	<h2>Datos del pedido:</h2>
+		Estado: <?=Utils::showStatus($pedido->estado)?> <br/>
+		Número de pedido: <?= $pedido->id ?>   <br/>   
 
     <h3>Dirección de envio</h3>
 		Provincia: <?= $pedido->provincia ?>   <br/>
@@ -36,7 +39,5 @@
             
         </table>
 
-        <h3>Datos del pedido:</h3>
-		Estado: <?=Utils::showStatus($pedido->estado)?> <br/>
-		Número de pedido: <?= $pedido->id ?>   <br/>        
+             
 	<?php endif; ?>
