@@ -10,7 +10,8 @@
 <?php elseif(isset($_SESSION['categoria']) && $_SESSION['categoria'] != 'complete' && $_SESSION['editada'] = 'Noeditado'): ?>	
 	<strong class="alert_red">La categoria NO se ha editado correctamente</strong>
 <?php endif;
-Utils::deleteSession('editada'); }	
+Utils::deleteSession('editada'); 
+Utils::deleteSession('categoria');}	
 else{?>
 
 <?php if (isset($_SESSION['categoria']) && $_SESSION['categoria'] == 'complete'): ?>

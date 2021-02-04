@@ -30,8 +30,10 @@ class Categoria{
 		return $categoria;
 	}
 	
-	public function getModelos(){ // Creado por Jesus
-		$categoria = $this->db->query("SELECT categoria_id, COUNT(nombre) AS modelos FROM productos GROUP BY categoria_id ORDER BY categoria_id DESC ;");
+	//public function getModelos()
+	public function getAllValoresAlmacen(){ // Creado por Jesus
+		//$categoria = $this->db->query("SELECT categoria_id, COUNT(nombre) AS modelos FROM productos GROUP BY categoria_id ORDER BY categoria_id DESC ;");
+
 		return $categoria;
 	}
 

@@ -3,7 +3,12 @@
 <?php if (isset($pedido)): ?>
 	<h2>Datos del pedido:</h2>
 		Estado: <?=Utils::showStatus($pedido->estado)?> <br/>
-		Número de pedido: <?= $pedido->id ?>   <br/>   
+		Número de pedido: <?= $pedido->id ?>   <br/>  
+
+	<h3>Datos del Cliente:</h3>
+	Identificador: <?= $usr->id ?>   <br/>
+		Nombre: <?= $usr->nombre." ".$usr->apellidos ?> <br/>
+		Email: <?= $usr->email ?>   <br/><br/>  
 
     <h3>Dirección de envio</h3>
 		Provincia: <?= $pedido->provincia ?>   <br/>

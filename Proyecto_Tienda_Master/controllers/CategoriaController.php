@@ -8,7 +8,8 @@ class categoriaController{
 		Utils::isAdmin();
 		$categoria = new Categoria();
 		$categorias = $categoria->getAll();
-		$modelos = $categoria->getModelos();
+		//$modelos = $categoria->getModelos();
+		$valoresAlmacen = $categoria->getAllValoresAlmacen();
 		require_once 'views/categoria/index.php';
 	}
 	
@@ -55,12 +56,7 @@ class categoriaController{
 	
 	public function save(){ // modificado Jesus
 		Utils::isAdmin();
-	    // if(isset($_POST) && isset($_POST['nombre'])){
-		// 	// Guardar la categoria en bd
-		// 	$categoria = new Categoria();
-		// 	$categoria->setNombre($_POST['nombre']);
-		// 	$save = $categoria->save();
-		// }
+	   
 		if (isset($_POST) && isset($_POST['nombre'])){
 			$nombre = $_POST['nombre'];
 
