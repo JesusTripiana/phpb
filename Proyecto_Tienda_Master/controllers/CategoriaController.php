@@ -7,9 +7,9 @@ class categoriaController{
 	public function index(){
 		Utils::isAdmin();
 		$categoria = new Categoria();
-		$categorias = $categoria->getAll();
-		//$modelos = $categoria->getModelos();
+		//$categorias = $categoria->getAll();
 		$valoresAlmacen = $categoria->getAllValoresAlmacen();
+		 
 		require_once 'views/categoria/index.php';
 	}
 	

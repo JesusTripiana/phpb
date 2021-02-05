@@ -30,14 +30,15 @@ class Categoria{
 		return $categoria;
 	}
 	
-	//public function getModelos()
-	public function getAllValoresAlmacen(){ // Creado por Jesus
-		//$categoria = $this->db->query("SELECT categoria_id, COUNT(nombre) AS modelos FROM productos GROUP BY categoria_id ORDER BY categoria_id DESC ;");
-		$categoria = $this->db->query("SELECT c.id AS id, c.nombre AS nombre, SUM(p.stock*p.precio) AS total, SUM(p.stock) AS cantidad,
-		COUNT(p.id) AS numProductos FROM categorias c, productos p WHERE c.id LIKE p.categoria_id GROUP BY 1"
-		."UNION"
-		."SELECT id, nombre, 0 AS total, 0 AS cantidad, 0 AS numProductos FROM categorias"
-		."WHERE id not in(SELECT categoria_id FROM productos);");
+	
+	public function getAllValoresAlmacen(){ // Funcion NUEVA
+
+		 $categoria = $this->db->query("SELECT c.id AS id, c.nombre AS nombre, SUM(p.stock*p.precio) AS total, SUM(p.stock) AS cantidad,
+		COUNT(p.id) AS numProductos FROM categorias c, productos p WHERE c.id LIKE p.categoria_id GROUP BY 1 
+		UNION 
+		SELECT id, nombre, 0 AS total, 0 AS cantidad, 0 AS numProductos FROM categorias
+		WHERE id NOT IN (SELECT categoria_id FROM productos);"); 
+
 		return $categoria;
 	}
 
@@ -71,7 +72,7 @@ class Categoria{
 	
 	public function delete(){ // creado por Jesus
 		
-			$sql = "DELETE FROM categoria WHERE id={$this->id}";
+			$sql = "DELETE FROM categorias WHERE id={$this->getId()}";
 			$delete = $this->db->query($sql);
 			
 			$result = false;

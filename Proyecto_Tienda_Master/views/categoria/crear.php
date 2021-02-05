@@ -11,7 +11,8 @@
 
 <form action="<?=$url_action?>" method="POST">
 	<label for="nombre">Nombre</label>
-	<input type="text" name="nombre" required/>
+	<!-- Modificado para que aparezca la categoria a modificar -->
+	<input type="text" name="nombre" <?=(isset($edit) && isset($cat))? "placeholder = '$cat->nombre'" : " ";?> required /> 
 	
 	<input type="submit" value="Guardar" />
 </form>

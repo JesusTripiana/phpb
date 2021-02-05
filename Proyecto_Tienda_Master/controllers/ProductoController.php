@@ -86,7 +86,7 @@ class productoController{
 			$precio = isset($_POST['precio']) ? $_POST['precio'] : false;
 			$stock = isset($_POST['stock']) ? $_POST['stock'] : false;
 			$categoria = isset($_POST['categoria']) ? $_POST['categoria'] : false;
-			// $imagen = isset($_POST['imagen']) ? $_POST['imagen'] : false;
+			// $imagen = isset($_POST['imagen']) ? $_POST['imagen'] : false; 
 			
 			if($nombre && $descripcion && $precio && $stock && $categoria){
 				$producto = new Producto();
@@ -116,8 +116,14 @@ class productoController{
 				if(isset($_GET['id'])){
 					$id = $_GET['id'];
 					$producto->setId($id);
+					$_SESSION["editar"] = true;
 					
 					$save = $producto->edit();
+					
+					if(!$save){
+						$_SESSION["editar"] = false;
+					}
+
 				}else{
 					$save = $producto->save();
 				}

@@ -89,7 +89,7 @@ class Producto{
 		$this->imagen = $imagen;
 	}
 
-	public function getAll($pagina,$cantidadArt){ // MODIFICADO Jesus 
+	public function getAll($pagina,$cantidadArt){ // MODIFICADO 
 		$productos = $this->db->query("SELECT * FROM productos ORDER BY id DESC LIMIT $pagina,$cantidadArt");
 		return $productos;
 	}
