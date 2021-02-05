@@ -36,7 +36,7 @@ class categoriaController{
 		require_once 'views/categoria/crear.php';
 	}
 
-	public function editar(){ //Creado por Jesus
+	public function editar(){ //Creado Nuevo
 		Utils::isAdmin();
 		if(isset($_GET['id'])){
 			$id = $_GET['id'];
@@ -54,7 +54,7 @@ class categoriaController{
 		}
 	}
 	
-	public function save(){ // modificado Jesus
+	public function save(){ // modificado 
 		Utils::isAdmin();
 	   
 		if (isset($_POST) && isset($_POST['nombre'])){
