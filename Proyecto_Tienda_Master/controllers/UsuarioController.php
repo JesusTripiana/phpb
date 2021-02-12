@@ -1,4 +1,5 @@
 <?php
+require_once 'models/Pedido.php'; // include nuevo
 require_once 'models/Usuario.php';
 
 class usuarioController{
@@ -51,18 +52,21 @@ class usuarioController{
 		header("Location:".base_url.'usuario/registro');
 	}
 
-	public function detalles(){ //Codigo Nuevo
+	public function detalle(){
 		Utils::isAdmin();
+		
 		if(isset($_GET['id'])){
 			$id = $_GET['id'];
+			if ($_GET['totalPedidos'] > 0){
+				$_SESSION['totalPedidos'] = $_GET['totalPedidos'];
+			}
 			
-			$usuario = new Usuario();
-			$usuario->setId($id);
+			// obtener todos los pedidos de 1 usuario
+			$pedido = new Pedido();
+			$pedido->setUsuario_id($id);
+			$pedidos = $pedido->getAllByUser();
 			
-			$usu = $usuario->getOne();
-			
-			require_once 'views/usuario/mostrarDetalles.php'; 
-			
+			require_once 'views/usuario/detalles.php';
 		}else{
 			header('Location:'.base_url.'usuario/index');
 		}

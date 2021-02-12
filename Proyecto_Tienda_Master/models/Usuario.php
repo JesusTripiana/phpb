@@ -75,13 +75,15 @@ class Usuario{
 	 return $usuarios;
  	}
 
-	 // funcion NUEVA 
+	 // funcion NUEVA para tener los datos de la vista INDEX de USUARIOS
 	 public function getAllWithTotal(){
+
 		 $usuarios = $this->db->query("SELECT p.usuario_id AS id, usu.nombre, usu.apellidos, usu.email, usu.rol, SUM(p.coste) as totalPedidos 
 		 							   FROM usuarios usu, pedidos p WHERE usu.id = p.usuario_id GROUP BY 1 
 									   UNION 
 									   SELECT id, nombre, apellidos, email, rol, 0 AS totalPedidos 
 									   FROM usuarios WHERE id NOT IN(SELECT usuario_id FROM pedidos);");
+	  
 	  return $usuarios;
 	 }
 

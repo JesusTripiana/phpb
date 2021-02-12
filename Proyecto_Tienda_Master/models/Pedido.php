@@ -110,8 +110,8 @@ class Pedido{
 	}
 	
 	public function getAllByUser(){
-		$sql = "SELECT p.* FROM pedidos p "
-				. "WHERE p.usuario_id = {$this->getUsuario_id()} ORDER BY id DESC";
+		$sql = "SELECT * FROM pedidos "
+				. "WHERE usuario_id = {$this->getUsuario_id()} ORDER BY id DESC";
 			
 		$pedido = $this->db->query($sql);
 			

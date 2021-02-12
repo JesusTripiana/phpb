@@ -26,17 +26,18 @@
 
 	<?php 
 	
-	while($usu = $usuarios->fetch_object()):?>
+	while($usu = $usuarios->fetch_object()): // tabla modificada?>
+
 		<tr>
-			<td><?=$usu->id;?></td>
+			<td>
+            <a href="<?= base_url ?>usuario/detalle&id=<?=$usu->id;?>&totalPedidos=<?=$usu->totalPedidos;?>"><?=$usu->id;?></a>
+            </td>
 			<td><?=$usu->nombre;?></td>
 			<td><?=$usu->apellidos;?></td>
 			<td><?=$usu->email;?></td>
 			<td><?=$usu->rol;?></td>
             <td><?=$usu->totalPedidos;?> €</td>
-			<td>
-            <!--faltan las funciones de Detalles  usuario en el CONTROLER-->
-				<a href="<?=base_url?>usuario/detalles&id=<?=$usu->id?>" class="button button-gestion">Usuario Detallado</a>		
+			<td>		
 				<a href="<?=base_url?>usuario/eliminar&id=<?=$usu->id?>" class="button button-gestion button-red">Eliminar</a>	
 			</td>
 		</tr>

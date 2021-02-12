@@ -34,10 +34,10 @@ class Categoria{
 	public function getAllValoresAlmacen(){ // Funcion NUEVA
 
 		 $categoria = $this->db->query("SELECT c.id AS id, c.nombre AS nombre, SUM(p.stock*p.precio) AS total, SUM(p.stock) AS cantidad,
-		COUNT(p.id) AS numProductos FROM categorias c, productos p WHERE c.id LIKE p.categoria_id GROUP BY 1 
-		UNION 
-		SELECT id, nombre, 0 AS total, 0 AS cantidad, 0 AS numProductos FROM categorias
-		WHERE id NOT IN (SELECT categoria_id FROM productos);"); 
+										COUNT(p.id) AS numProductos FROM categorias c, productos p WHERE c.id LIKE p.categoria_id GROUP BY 1 
+										UNION 
+										SELECT id, nombre, 0 AS total, 0 AS cantidad, 0 AS numProductos FROM categorias
+										WHERE id NOT IN (SELECT categoria_id FROM productos);"); 
 
 		return $categoria;
 	}
