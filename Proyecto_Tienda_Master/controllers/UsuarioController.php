@@ -4,7 +4,14 @@ require_once 'models/Usuario.php';
 class usuarioController{
 	
 	public function index(){
-		echo "Controlador Usuarios, Acción index";
+		//echo "Controlador Usuarios, Acción index"; // linea de codigo de aplicacion inicial
+		// añanido de nuevas
+		Utils::isAdmin();
+		$usuario = new Usuario();
+		$usuarios = $usuario->getAll();
+		
+		 
+		require_once 'views/usuario/index.php';
 	}
 	
 	public function registro(){
@@ -18,6 +25,8 @@ class usuarioController{
 			$apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : false;
 			$email = isset($_POST['email']) ? $_POST['email'] : false;
 			$password = isset($_POST['password']) ? $_POST['password'] : false;
+
+			$_SESSION['nombre'] = $nombre; // no se si esta sesion en el formulario de registro hace algo, preguntar a Alberto
 			
 			if($nombre && $apellidos && $email && $password){
 				$usuario = new Usuario();
