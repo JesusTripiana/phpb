@@ -70,7 +70,7 @@ class Categoria{
 		return $result;
 	}
 	
-	public function delete(){ // creado por Jesus
+	public function delete(){ // codigo nuevo
 		
 			$sql = "DELETE FROM categorias WHERE id={$this->getId()}";
 			$delete = $this->db->query($sql);

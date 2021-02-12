@@ -75,6 +75,16 @@ class Usuario{
 	 return $usuarios;
  	}
 
+	 // funcion NUEVA 
+	 public function getAllWithTotal(){
+		 $usuarios = $this->db->query("SELECT p.usuario_id AS id, usu.nombre, usu.apellidos, usu.email, usu.rol, SUM(p.coste) as totalPedidos 
+		 							   FROM usuarios usu, pedidos p WHERE usu.id = p.usuario_id GROUP BY 1 
+									   UNION 
+									   SELECT id, nombre, apellidos, email, rol, 0 AS totalPedidos 
+									   FROM usuarios WHERE id NOT IN(SELECT usuario_id FROM pedidos);");
+	  return $usuarios;
+	 }
+
 	public function save(){
 		$sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', '{$this->getApellidos()}', '{$this->getEmail()}', '{$this->getPassword()}', 'user', null);";
 		$save = $this->db->query($sql);
@@ -110,11 +120,22 @@ class Usuario{
 		return $result;
 	}
 
-	public function getOne(){ // creada nuevo
-		$producto = $this->db->query("SELECT * FROM usuarios WHERE id = {$this->getId()}");
-		return $producto->fetch_object();
+	public function getOne(){ // codigo nuevo
+		$usuario = $this->db->query("SELECT * FROM usuarios WHERE id = {$this->getId()}");
+		return $usuario->fetch_object();
 	}
 	
+	public function delete(){ // codigo nuevo
+		
+		$sql = "DELETE FROM usuarios WHERE id={$this->getId()}";
+		$delete = $this->db->query($sql);
+		
+		$result = false;
+		if($delete){
+			$result = true;
+		}
 	
+	return $result;
+}
 	
 }

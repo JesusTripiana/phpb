@@ -4,6 +4,14 @@
 	Crear usuario nuevo
 </a>
 
+<!-- Codigo NUEVO para mostrar confirmacion o no del borrado de usuario-->
+<?php if (isset($_SESSION['delete']) && $_SESSION['delete'] == 'complete'): ?>
+	<strong class="alert_green">El usuario se ha borrado correctamente</strong>
+<?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] != 'complete'): ?>	
+	<strong class="alert_red">El usuario NO SE PUEDE BORRAR por tener pedidos pendientes de servir</strong></br>
+<?php endif; 
+      Utils::deleteSession('delete');?>
+
 <!--Muestro los usuarios registrados en el sistema-->
 <table>
 	<tr>
@@ -12,6 +20,8 @@
 		<th>APELLIDOS</th>
 		<th>EMAIL</th>
 		<th>ROL</th>
+        <th>IMPORTE PEDIDOS</th>
+        <th>ACCIONES</th>
 	</tr>
 
 	<?php 
@@ -23,10 +33,11 @@
 			<td><?=$usu->apellidos;?></td>
 			<td><?=$usu->email;?></td>
 			<td><?=$usu->rol;?></td>
+            <td><?=$usu->totalPedidos;?> €</td>
 			<td>
-            <!--faltan las funciones de editar y eliminar usuario en el CONTROLER-->
-				<a href="<?=base_url?>usuario/editar&id=<?=$val->id?>" class="button button-gestion">Editar</a>		
-				<a href="<?=base_url?>usuario/eliminar&id=<?=$val->id?>" class="button button-gestion button-red">Eliminar</a>	
+            <!--faltan las funciones de Detalles  usuario en el CONTROLER-->
+				<a href="<?=base_url?>usuario/detalles&id=<?=$usu->id?>" class="button button-gestion">Usuario Detallado</a>		
+				<a href="<?=base_url?>usuario/eliminar&id=<?=$usu->id?>" class="button button-gestion button-red">Eliminar</a>	
 			</td>
 		</tr>
 		</tr>
