@@ -27,7 +27,13 @@ class usuarioController{
 			$email = isset($_POST['email']) ? $_POST['email'] : false;
 			$password = isset($_POST['password']) ? $_POST['password'] : false;
 			$password2 = isset($_POST['password2']) ? $_POST['password2'] : false;
-
+			if ($password != $password2){
+				$_SESSION['msgERROR'] = "Los PASSWORD SON DIFERENTES, vuelva a introducir.";
+				header("Location:".base_url.'usuario/registro');
+				die();
+			}
+			//compruebo si existe el mensage de error generado por los password diferentes
+	
 			//$_SESSION['nombre'] = $nombre; // no se si esta sesion en el formulario de registro hace algo, preguntar a Alberto
 
 			if($nombre && $apellidos && $email && $password){
@@ -36,6 +42,7 @@ class usuarioController{
 				$usuario->setApellidos($apellidos);
 				$usuario->setEmail($email);
 				$usuario->setPassword($password);
+
 
 				$save = $usuario->save();
 				if($save){

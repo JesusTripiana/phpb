@@ -1,10 +1,12 @@
+
 <?php 
+	// compruebo si el objeto pedidos viene sin contenido
     if ($pedidos->num_rows == 0):
 ?>
 <h3>El usuario no tiene pedidos por el momento</h3>
 
 <?php 
-header("Refresh:4; url=".base_url."usuario/index");
+header("Refresh:3; url=".base_url."usuario/index");
 die();
 endif;?>
 
@@ -38,6 +40,10 @@ endif;?>
 		</tr>
 	<?php endwhile; ?>
 </table>
-<br><h3>El total de pedidos del usuario asciende a <?=$_SESSION['totalPedidos']?> €</h3>
 
+<br><h3>El total de pedidos del usuario asciende a <?=$_SESSION['totalPedidos']?> €</h3>
 <?php Utils::deleteSession('totalPedidos');?>
+
+<form action="<?=base_url?>usuario/index">
+	<input type="submit" value="Volver Atras">
+</form>
