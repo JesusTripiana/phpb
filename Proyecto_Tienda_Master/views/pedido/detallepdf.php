@@ -30,7 +30,7 @@
 						<?= $producto->nombre ?>
 					</td>
 					<td>
-						<?= $producto->precio ?>
+						<?= number_format($producto->precio,2,',','.');?> €
 					</td>
 					<td>
 						<?= $producto->unidades ?>
@@ -39,7 +39,7 @@
 			<?php endwhile; ?>
             <tr>
             <th>Total a pagar-></th>
-            <th><?= $pedido->coste ?> $</th>
+            <th><?=number_format($pedido->coste,2,',','.');?> €</th>
             </tr>
             
         </table>

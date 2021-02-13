@@ -36,7 +36,8 @@
 			<td><?=$usu->apellidos;?></td>
 			<td><?=$usu->email;?></td>
 			<td><?=$usu->rol;?></td>
-            <td><?=$usu->totalPedidos;?> €</td>
+			<!-- NUMBER_FORMAT da formato a una variable INT, explicado mas detallado en DETALLES usuario-->
+            <td><?=number_format($usu->totalPedidos,2,',','.');?> €</td>
 			<td>		
 				<a href="<?=base_url?>usuario/eliminar&id=<?=$usu->id?>" class="button button-gestion button-red">Eliminar</a>	
 			</td>

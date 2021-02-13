@@ -29,7 +29,7 @@
 		<h3>Datos del pedido:</h3>
 		Estado: <?=Utils::showStatus($pedido->estado)?> <br/>
 		Número de pedido: <?= $pedido->id ?>   <br/>
-		Total a pagar: <?= $pedido->coste ?> $ <br/>
+		Total a pagar: <?=number_format($pedido->coste,2,',','.');?> €<br/>
 		Productos:
 
 		<table>
@@ -52,7 +52,7 @@
 						<a href="<?= base_url ?>producto/ver&id=<?= $producto->id ?>"><?= $producto->nombre ?></a>
 					</td>
 					<td>
-						<?= $producto->precio ?>
+						<?=number_format($producto->precio,2,',','.');?> €
 					</td>
 					<td>
 						<?= $producto->unidades ?>

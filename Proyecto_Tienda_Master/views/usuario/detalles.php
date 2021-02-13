@@ -40,8 +40,8 @@ endif;?>
 		</tr>
 	<?php endwhile; ?>
 </table>
-
-<br><h3>El total de pedidos del usuario asciende a <?=$_SESSION['totalPedidos']?> €</h3>
+<!-- la funcion NUMBER_FORMAT formatea un INT pasando por parametro la variable, Nº decimales, separador decimales, separador millares -->
+<br><h3>El total de pedidos del usuario asciende a <?=number_format($_SESSION['totalPedidos'],2,',','.');?> €</h3>
 <?php Utils::deleteSession('totalPedidos');?>
 
 <form action="<?=base_url?>usuario/index">

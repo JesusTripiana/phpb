@@ -26,7 +26,7 @@
 			<a href="<?= base_url ?>producto/ver&id=<?=$producto->id?>"><?=$producto->nombre?></a>
 		</td>
 		<td>
-			<?=$producto->precio?>
+			<?=number_format($producto->precio,2,',','.');?> €
 		</td>
 		<td>
 			<?=$elemento['unidades']?>
@@ -48,7 +48,7 @@
 </div>
 <div class="total-carrito">
 	<?php $stats = Utils::statsCarrito(); ?>
-	<h3>Precio total: <?=$stats['total']?> $</h3>
+	<h3>Precio total: <?=number_format($stats['total'],2,',','.');?> €</h3>
 	<a href="<?=base_url?>pedido/hacer" class="button button-pedido">Hacer pedido</a>
 </div>
 

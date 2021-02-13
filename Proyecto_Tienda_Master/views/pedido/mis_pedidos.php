@@ -19,7 +19,7 @@
 				<a href="<?= base_url ?>pedido/detalle&id=<?= $ped->id ?>"><?= $ped->id ?></a>
 			</td>
 			<td>
-				<?= $ped->coste ?> $
+				<?= number_format($ped->coste,2,',','.');?> €
 			</td>
 			<td>
 				<?= $ped->fecha ?>

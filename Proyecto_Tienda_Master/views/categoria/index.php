@@ -46,7 +46,7 @@ else{?>
 			<td><?=$val->nombre;?></td>
 			<td><?=$val->numProductos;?></td>
 			<td><?=$val->cantidad;?></td>
-			<td><?=$val->total;?></td>
+			<td><?=number_format($val->total,2,',','.');?> €</td>
 			<td>
 				<a href="<?=base_url?>categoria/editar&id=<?=$val->id?>" class="button button-gestion">Editar</a>		
 				<a href="<?=base_url?>categoria/eliminar&id=<?=$val->id?>" class="button button-gestion button-red">Eliminar</a>	

@@ -27,6 +27,11 @@ class usuarioController{
 			$email = isset($_POST['email']) ? $_POST['email'] : false;
 			$password = isset($_POST['password']) ? $_POST['password'] : false;
 			$password2 = isset($_POST['password2']) ? $_POST['password2'] : false;
+
+			$_SESSION ['nombre'] = $nombre;
+			$_SESSION ['apellidos'] = $apellidos;
+			$_SESSION ['email'] = $email;
+
 			if ($password != $password2){
 				$_SESSION['msgERROR'] = "Los PASSWORD SON DIFERENTES, vuelva a introducir.";
 				header("Location:".base_url.'usuario/registro');
@@ -53,6 +58,7 @@ class usuarioController{
 			}else{
 				$_SESSION['register'] = "failed";
 			}
+			// cuando haga modificacion de datos de usuario tengo que comprobar GET id de usuario
 		}else{
 			$_SESSION['register'] = "failed";
 		}

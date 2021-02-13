@@ -39,7 +39,7 @@
 		<tr>
 			<td><?=$pro->id;?></td>
 			<td><?=$pro->nombre;?></td>
-			<td><?=$pro->precio;?></td>
+			<td><?=number_format($pro->precio,2,',','.');?> €</td>
 			<td><?=$pro->stock;?></td>
 			<td>
 				<a href="<?=base_url?>producto/editar&id=<?=$pro->id?>" class="button button-gestion">Editar</a>
