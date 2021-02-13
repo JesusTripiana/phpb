@@ -37,7 +37,6 @@ class usuarioController{
 				header("Location:".base_url.'usuario/registro');
 				die();
 			}
-			//compruebo si existe el mensage de error generado por los password diferentes
 	
 			//$_SESSION['nombre'] = $nombre; // no se si esta sesion en el formulario de registro hace algo, preguntar a Alberto
 

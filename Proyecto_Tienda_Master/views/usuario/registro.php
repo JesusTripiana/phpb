@@ -39,8 +39,6 @@ endif;?>
 
 
 <form action="<?=$url_action?>" method="POST">
-
-<!--Preguntar a Alberto como hacer que falle el formulario para comprobar si hace algo isset($edit) && -->
 	
 	<label for="nombre">Nombre</label>
 	<input type="text" name="nombre" placeholder="<?=isset($_SESSION['nombre'])? $_SESSION['nombre']:" ";?>" required/> 
