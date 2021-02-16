@@ -163,7 +163,7 @@ class pedidoController{
 		require_once 'views/pedido/detallepdf.php';
 		$salida = ob_get_contents();
 		ob_end_clean();
-
+		ob_clean();
 		return $salida;
 	}
 	
