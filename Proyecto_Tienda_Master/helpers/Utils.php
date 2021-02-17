@@ -42,9 +42,22 @@ class Utils{
 		
 		if(isset($_SESSION['carrito'])){
 			$stats['count'] = count($_SESSION['carrito']);
-			
-			foreach($_SESSION['carrito'] as $producto){
-				$stats['total'] += $producto['precio']*$producto['unidades'];
+            foreach ($_SESSION['carrito'] as $producto) {
+				// $producto['producto'] es un objeto tipo PRODUCTO, el cual recorro para comprobar
+				// si la KEY es == oferta y si esta en oferta aplico el descuento (comprobar con var_dum $producto)
+                foreach ($producto['producto'] as $key=>$value) {
+					if ($key == 'oferta' && $value == 'si') {
+						$stats['total'] += ($producto['precio']*DESCUENTO)*$producto['unidades'];
+						//var_dump($stats['total']);
+						break;
+						
+					} elseif($key == 'oferta' && $value == 'no'){
+						$stats['total'] += $producto['precio']*$producto['unidades'];
+						break;
+					}
+					
+                }
+              
 			}
 		}
 		

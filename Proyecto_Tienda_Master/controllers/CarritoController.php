@@ -41,7 +41,8 @@ class carritoController{
 					"id_producto" => $producto->id,
 					"precio" => $producto->precio,
 					"unidades" => 1,
-					"producto" => $producto
+					"producto" => $producto,
+					"oferta" => $producto->oferta // añadido nuevo
 				);
 			}
 		}

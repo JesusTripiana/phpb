@@ -25,12 +25,14 @@
 		Provincia: <?= $pedido->provincia ?>   <br/>
 		Cuidad: <?= $pedido->localidad ?> <br/>
 		Direccion: <?= $pedido->direccion ?>   <br/><br/>
+		<?php var_dump($pedido)?>
 
 		<h3>Datos del pedido:</h3>
 		Estado: <?=Utils::showStatus($pedido->estado)?> <br/>
 		Número de pedido: <?= $pedido->id ?>   <br/>
 		Total a pagar: <?=number_format($pedido->coste,2,',','.');?> €<br/>
 		Productos:
+		
 
 		<table>
 			<tr>
@@ -39,7 +41,9 @@
 				<th>Precio</th>
 				<th>Unidades</th>
 			</tr>
-			<?php while ($producto = $productos->fetch_object()): ?>
+			
+			<?php while ($producto = $productos->fetch_object()): 
+				var_dump($producto);?>
 				<tr>
 					<td>
 						<?php if ($producto->imagen != null): ?>
@@ -52,7 +56,14 @@
 						<a href="<?= base_url ?>producto/ver&id=<?= $producto->id ?>"><?= $producto->nombre ?></a>
 					</td>
 					<td>
-						<?=number_format($producto->precio,2,',','.');?> €
+
+					<?php // muestro el precio con descuento si el producto esta en OFERTA
+						 if($producto->oferta == 'si'){
+							echo number_format(($producto->precio*DESCUENTO),2,',','.').' €';
+						}else{
+							echo number_format($producto->precio,2,',','.').' €';
+						}?>
+					
 					</td>
 					<td>
 						<?= $producto->unidades ?>

@@ -14,7 +14,16 @@
 					<?php endif; ?>
 					<h2><?= $product->nombre ?></h2>
 				</a>
-				<p><?= number_format($product->precio,2,',','.');?> € </p>
+
+				<!--si el producto esta en OFERTA-->
+				<?php	if ($product->oferta == 'si'):	?>
+					<p><img class="img_carrito" src="<?=base_url?>assets/img/oferta.png" alt="oferta"></p><br>
+					<p class="price" style="text-decoration:line-through"><?= number_format($product->precio,2,',','.'); ?> €</p>
+					<p class="price" style="color:red"><b><?= number_format($product->precio*DESCUENTO,2,',','.'); ?> €</b></p><br><br><br>
+				<?php else: ?>
+					<p class="price"><b><?= number_format($product->precio,2,',','.'); ?> €</b></p><br>
+				<?php endif; ?>
+
 				<a href="<?=base_url?>carrito/add&id=<?=$product->id?>" class="button">Comprar</a>
 			</div>
 		<?php endwhile; ?>

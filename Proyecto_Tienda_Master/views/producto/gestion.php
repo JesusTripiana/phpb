@@ -33,6 +33,7 @@
 		<th>NOMBRE</th>
 		<th>PRECIO</th>
 		<th>STOCK</th>
+		<th>OFERTA</th><!-- Columna NUEVA para mostrar el estado del campo oferta-->
 		<th>ACCIONES</th>
 	</tr>
 	<?php while($pro = $productos->fetch_object()): ?>
@@ -41,6 +42,7 @@
 			<td><?=$pro->nombre;?></td>
 			<td><?=number_format($pro->precio,2,',','.');?> €</td>
 			<td><?=$pro->stock;?></td>
+			<td><?=$pro->oferta;?></td><!--Muestro el contenido del campo oferta que antes no se mostraba-->
 			<td>
 				<a href="<?=base_url?>producto/editar&id=<?=$pro->id?>" class="button button-gestion">Editar</a>
 				<a href="<?=base_url?>producto/eliminar&id=<?=$pro->id?>" class="button button-gestion button-red">Eliminar</a>

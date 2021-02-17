@@ -102,6 +102,12 @@ class Producto{
 		$productos = $this->db->query($sql);
 		return $productos;
 	}
+
+	// funcion para mostrar todos los productos que estan en OFERTA
+	public function getProductoOferta(){
+		$producto = $this->db->query("SELECT * FROM productos WHERE oferta = 'si'");
+		return $producto->fetch_object();
+	}
 	
 	public function getRandom($limit){
 		$productos = $this->db->query("SELECT * FROM productos ORDER BY RAND() LIMIT $limit");
@@ -113,8 +119,9 @@ class Producto{
 		return $producto->fetch_object();
 	}
 	
+	//incluyo el campo OFERTA ya que es un campo a que antes no estaba, para poder modificarlo
 	public function save(){
-		$sql = "INSERT INTO productos VALUES(NULL, {$this->getCategoria_id()}, '{$this->getNombre()}', '{$this->getDescripcion()}', {$this->getPrecio()}, {$this->getStock()}, null, CURDATE(), '{$this->getImagen()}');";
+		$sql = "INSERT INTO productos VALUES(NULL, {$this->getCategoria_id()}, '{$this->getNombre()}', '{$this->getDescripcion()}', {$this->getPrecio()}, {$this->getStock()}, '{$this->getOferta()}', CURDATE(), '{$this->getImagen()}');";
 		$save = $this->db->query($sql);
 		
 		$result = false;
@@ -124,8 +131,9 @@ class Producto{
 		return $result;
 	}
 	
+	//incluyo el campo oferta ya que es un campo que antes no estaba, para poder editarlo
 	public function edit(){
-		$sql = "UPDATE productos SET nombre='{$this->getNombre()}', descripcion='{$this->getDescripcion()}', precio={$this->getPrecio()}, stock={$this->getStock()}, categoria_id={$this->getCategoria_id()}  ";
+		$sql = "UPDATE productos SET nombre='{$this->getNombre()}', descripcion='{$this->getDescripcion()}', precio={$this->getPrecio()}, stock={$this->getStock()}, oferta='{$this->getOferta()}', categoria_id={$this->getCategoria_id()}  ";
 		
 		if($this->getImagen() != null){
 			$sql .= ", imagen='{$this->getImagen()}'";
@@ -154,7 +162,7 @@ class Producto{
 		return $result;
 	}
 
-	public function count_row(){ // CREADO Jesus
+	public function count_row(){ // CREADO nueva para la paginacion
 		$sql = "SELECT COUNT(*) resu FROM productos";
 		$total = $this->db->query($sql);
 		$fila = $total->fetch_assoc();

@@ -1,6 +1,6 @@
 <?php if(isset($edit) && isset($pro) && is_object($pro)): ?>
 	<h1>Editar producto <?=$pro->nombre?></h1>
-	<?php $url_action = base_url."producto/save&id=".$pro->id; ?>
+	<?php $url_action = base_url."producto/save&id=".$pro->id;?>
 	
 <?php else: ?>
 	<h1>Crear nuevo producto</h1>
@@ -21,6 +21,9 @@
 
 		<label for="stock">Stock</label>
 		<input type="number" name="stock" value="<?=isset($pro) && is_object($pro) ? $pro->stock : ''; ?>"/>
+
+		<label for='oferta'>Oferta</label>
+		<input type="text" name='oferta' value='<?=isset($pro) && is_object($pro) ? $pro->oferta : '';?>'/>
 
 		<label for="categoria">Categoria</label>
 		<?php $categorias = Utils::showCategorias(); ?>

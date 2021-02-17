@@ -9,7 +9,7 @@
 		<h3>Datos del pedido:</h3>
 
 		Número de pedido: <?= $pedido->id ?>   <br/>
-		Total a pagar: <?= $pedido->coste ?> $ <br/>
+		Total a pagar: <?=number_format($pedido->coste,2,',','.')  ?> € <br/>
 		Productos:
 
 		<table>
@@ -32,7 +32,13 @@
 						<a href="<?= base_url ?>producto/ver&id=<?= $producto->id ?>"><?= $producto->nombre ?></a>
 					</td>
 					<td>
-						<?= $producto->precio ?>
+						
+						<?php // muestro el precio con descuento si el producto esta en OFERTA
+						 if($producto->oferta == 'si'){
+							echo number_format(($producto->precio*DESCUENTO),2,',','.').' €';
+						}else{
+								echo number_format($producto->precio,2,',','.').' €';
+						}?>
 					</td>
 					<td>
 						<?= $producto->unidades ?>

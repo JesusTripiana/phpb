@@ -23,6 +23,14 @@ class productoController{
 		}
 		require_once 'views/producto/ver.php';
 	}
+
+	// funcion para mostrar todos los productos que en el campo OFERTA esta en 'si'
+	public function mostrarProductosOferta(){
+		$producto = new Producto();
+		$productosOferta = $producto->getProductoOferta();
+
+		require_once 'views/producto/ofertas.php';
+	}
 	
 	public function gestion(){
 		Utils::isAdmin();
@@ -85,15 +93,19 @@ class productoController{
 			$descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : false;
 			$precio = isset($_POST['precio']) ? $_POST['precio'] : false;
 			$stock = isset($_POST['stock']) ? $_POST['stock'] : false;
+			// añado esta linea para la modificacion de si el producto esta en oferta o no
+			$oferta = isset($_POST['oferta'])? $_POST['oferta'] : false;
 			$categoria = isset($_POST['categoria']) ? $_POST['categoria'] : false;
 			// $imagen = isset($_POST['imagen']) ? $_POST['imagen'] : false; 
 			
-			if($nombre && $descripcion && $precio && $stock && $categoria){
+			if($nombre && $descripcion && $precio && $stock && $oferta && $categoria){
 				$producto = new Producto();
 				$producto->setNombre($nombre);
 				$producto->setDescripcion($descripcion);
 				$producto->setPrecio($precio);
 				$producto->setStock($stock);
+				// linea añadida para incluir en objeto PRODUCTO el estado del campo oferta 
+				$producto->setOferta($oferta);
 				$producto->setCategoria_id($categoria);
 				
 				// Guardar la imagen

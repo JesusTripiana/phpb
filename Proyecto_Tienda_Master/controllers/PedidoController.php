@@ -19,7 +19,7 @@ class pedidoController{
 			
 			$stats = Utils::statsCarrito();
 			$coste = $stats['total'];
-				
+			var_dump($coste);	
 			if($provincia && $localidad && $direccion){
 				// Guardar datos en bd
 				$pedido = new Pedido();

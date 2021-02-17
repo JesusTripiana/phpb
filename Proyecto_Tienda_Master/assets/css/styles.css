@@ -45,6 +45,7 @@ td{
     width: 100px;
 }
 
+
 /*CONTAINER*/
 #container{
    width: 80%;
@@ -335,6 +336,7 @@ button{
     width: 47%;
     float:left;
 }
+
 
 #detail-product img{
     display: block;

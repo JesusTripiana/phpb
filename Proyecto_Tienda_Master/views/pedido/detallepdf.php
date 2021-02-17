@@ -30,7 +30,14 @@
 						<?= $producto->nombre ?>
 					</td>
 					<td>
-						<?= number_format($producto->precio,2,',','.');?> €
+
+					<?php // muestro el precio con descuento si el producto esta en OFERTA
+						 if($producto->oferta == 'si'){
+							echo number_format(($producto->precio*DESCUENTO),2,',','.').' €';
+						}else{
+								echo number_format($producto->precio,2,',','.').' €';
+						}?>
+						
 					</td>
 					<td>
 						<?= $producto->unidades ?>

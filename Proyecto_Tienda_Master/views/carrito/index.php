@@ -26,8 +26,13 @@
 			<a href="<?= base_url ?>producto/ver&id=<?=$producto->id?>"><?=$producto->nombre?></a>
 		</td>
 		<td>
-			<?=number_format($producto->precio,2,',','.');?> €
-		</td>
+			<!--si el producto esta en oferta-->
+		<?php if ($producto->oferta=='si'){
+			echo number_format($producto->precio*DESCUENTO,2,',','.');
+		}else{
+            echo number_format($producto->precio, 2, ',', '.');
+        } ?>
+			 €</td>
 		<td>
 			<?=$elemento['unidades']?>
 			<div class="updown-unidades">
