@@ -23,7 +23,15 @@
 		<input type="number" name="stock" value="<?=isset($pro) && is_object($pro) ? $pro->stock : ''; ?>"/>
 
 		<label for='oferta'>Oferta</label>
-		<input type="text" name='oferta' value='<?=isset($pro) && is_object($pro) ? $pro->oferta : '';?>'/>
+		<select name='oferta'>
+		<?php if($pro->oferta == 'si'): ?>
+		<option value="si">si</option>
+		<option value="no">no</option>
+		<?php else: ?>
+		<option value="no">no</option>
+		<option value="si">si</option>
+		<?php endif; ?>
+		</select>
 
 		<label for="categoria">Categoria</label>
 		<?php $categorias = Utils::showCategorias(); ?>
