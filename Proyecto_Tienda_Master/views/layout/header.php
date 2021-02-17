@@ -33,7 +33,7 @@
 					<?php endwhile; ?>
 					
 					<li>
-						<a href="<?=base_url?>producto/ofertas">¡OFERTAS!</a>
+						<a href="<?=base_url?>producto/mostrarProductosOferta">¡OFERTAS!</a>
 					</li>
 				</ul>
 			</nav>

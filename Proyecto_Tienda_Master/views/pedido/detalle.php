@@ -25,7 +25,6 @@
 		Provincia: <?= $pedido->provincia ?>   <br/>
 		Cuidad: <?= $pedido->localidad ?> <br/>
 		Direccion: <?= $pedido->direccion ?>   <br/><br/>
-		<?php var_dump($pedido)?>
 
 		<h3>Datos del pedido:</h3>
 		Estado: <?=Utils::showStatus($pedido->estado)?> <br/>
@@ -43,7 +42,12 @@
 			</tr>
 			
 			<?php while ($producto = $productos->fetch_object()): 
-				var_dump($producto);?>
+				/* var_dump(Utils::comprobarFecha($producto->fecha, $pedido->fecha)); echo '<br>';
+				var_dump($producto->fecha); echo '<br>';
+				var_dump($pedido->fecha);
+				die(); */
+				?>
+
 				<tr>
 					<td>
 						<?php if ($producto->imagen != null): ?>
@@ -58,7 +62,7 @@
 					<td>
 
 					<?php // muestro el precio con descuento si el producto esta en OFERTA
-						 if($producto->oferta == 'si'){
+						 if($producto->oferta == 'si' && Utils::comprobarFecha($producto->fecha, $pedido->fecha)){
 							echo number_format(($producto->precio*DESCUENTO),2,',','.').' €';
 						}else{
 							echo number_format($producto->precio,2,',','.').' €';

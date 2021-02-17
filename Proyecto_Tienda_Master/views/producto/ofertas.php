@@ -1,26 +1,22 @@
 <h1>¡¡¡OFERTAS ESPECIALES!!!</h1>
 
 <?php while ($pro = $productosOferta->fetch_object()):?>
-    <div class="product">
-        <a href="<?= base_usl?>producto/ver&id=<?=$pro->id?>">
-
-        <?php if($pro->imagen != null): ?>
+  <div class="product">
+		<a href="<?=base_url?>producto/ver&id=<?=$pro->id?>">
+			<?php if($pro->imagen != null): ?>
 				<img src="<?=base_url?>uploads/images/<?=$pro->imagen?>" />
-		<?php else: ?>
+			<?php else: ?>
 				<img src="<?=base_url?>assets/img/camiseta.png" />
-			<?php endif; ?>
-        
-        <h2><?=$pro->nombre?></h2>
-        </a>
+				<?php endif; ?>
 
-        <img src="<?=base_url?>uploads/images/oferta.png"/>
-        <h2><?=$pro->nombre?></h2>
-    
-        <p> 
-		<b class="price" style="text-decoration:line-through"><?= $product->precio ?>$</b>
-		<b class="price" style="color:red">&nbsp;&nbsp;<?= $product->precio*0.5 ?>$</b> 
-		</p> 
-		 
-		<a href="<?=base_url?>carrito/add&id=<?=$product->id?>" class="button">Comprar</a>
-    </div>
+			<h2><?=$pro->nombre?></h2></a>
+				
+				<p><img style="height: 100px; width: 100px; float: left;" src="<?=base_url?>assets/img/oferta.png" alt="oferta"></p><br>
+				<p class="price" style="text-decoration:line-through"><?= number_format($pro->precio,2,',','.'); ?> €</p>
+				<p class="price" style="color:red"><b><?= number_format($pro->precio*DESCUENTO,2,',','.'); ?> €</b></p><br><br>
+
+		<a href="<?=base_url?>carrito/add&id=<?=$pro->id?>" class="button">Comprar</a>
+	</div>
 <?php endwhile; ?>
+
+

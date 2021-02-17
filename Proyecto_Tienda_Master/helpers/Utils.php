@@ -79,5 +79,19 @@ class Utils{
 		
 		return $value;
 	}
+
+	public static function comprobarFecha($fecha1,$fecha2){
+		$dato = false;
+		$date1=date_create($fecha1);
+		$date2=date_create($fecha2);
+		$diff=date_diff($date1,$date2);
+		$dias = $diff->format("%R%a days");
+	
+		if ($dias>=0){
+			$dato = true;
+		} 
+		return $dato;
+    }
 	
 }
+

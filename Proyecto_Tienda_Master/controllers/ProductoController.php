@@ -6,10 +6,11 @@ class productoController{
 	public function index(){
 		$producto = new Producto();
 		$productos = $producto->getRandom(6);
-	
+		
 		// renderizar vista
 		require_once 'views/producto/destacados.php';
 	}
+
 	
 	public function ver(){
 		if(isset($_GET['id'])){
@@ -28,7 +29,7 @@ class productoController{
 	public function mostrarProductosOferta(){
 		$producto = new Producto();
 		$productosOferta = $producto->getProductoOferta();
-
+		
 		require_once 'views/producto/ofertas.php';
 	}
 	
@@ -36,7 +37,6 @@ class productoController{
 		Utils::isAdmin();
 		
 		$producto = new Producto();
-		//$productos = $producto->getAll(); consulta al modelo ORIGINAL
 		
 		// Intentar hacer esta parte de paginacion generica para poder añadir en 
 		// otras vistas si es necesario

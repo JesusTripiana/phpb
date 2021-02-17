@@ -106,7 +106,7 @@ class Producto{
 	// funcion para mostrar todos los productos que estan en OFERTA
 	public function getProductoOferta(){
 		$producto = $this->db->query("SELECT * FROM productos WHERE oferta = 'si'");
-		return $producto->fetch_object();
+		return $producto;
 	}
 	
 	public function getRandom($limit){
@@ -132,8 +132,10 @@ class Producto{
 	}
 	
 	//incluyo el campo oferta ya que es un campo que antes no estaba, para poder editarlo
+	// incluido campo fecha actual cada vez que se actualice el articulo
 	public function edit(){
-		$sql = "UPDATE productos SET nombre='{$this->getNombre()}', descripcion='{$this->getDescripcion()}', precio={$this->getPrecio()}, stock={$this->getStock()}, oferta='{$this->getOferta()}', categoria_id={$this->getCategoria_id()}  ";
+		$sql = "UPDATE productos SET nombre='{$this->getNombre()}', descripcion='{$this->getDescripcion()}', precio={$this->getPrecio()}, 
+				stock={$this->getStock()}, oferta='{$this->getOferta()}', categoria_id={$this->getCategoria_id()}, fecha=CURDATE()  ";
 		
 		if($this->getImagen() != null){
 			$sql .= ", imagen='{$this->getImagen()}'";

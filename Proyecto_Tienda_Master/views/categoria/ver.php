@@ -17,7 +17,7 @@
 
 				<!--si el producto esta en OFERTA-->
 				<?php	if ($product->oferta == 'si'):	?>
-					<p><img class="img_carrito" src="<?=base_url?>assets/img/oferta.png" alt="oferta"></p><br>
+					<p><img style="height: 100px; width: 100px; float: left;" src="<?=base_url?>assets/img/oferta.png" alt="oferta"></p><br>
 					<p class="price" style="text-decoration:line-through"><?= number_format($product->precio,2,',','.'); ?> €</p>
 					<p class="price" style="color:red"><b><?= number_format($product->precio*DESCUENTO,2,',','.'); ?> €</b></p><br><br><br>
 				<?php else: ?>
