@@ -41,12 +41,7 @@
 				<th>Unidades</th>
 			</tr>
 			
-			<?php while ($producto = $productos->fetch_object()): 
-				/* var_dump(Utils::comprobarFecha($producto->fecha, $pedido->fecha)); echo '<br>';
-				var_dump($producto->fecha); echo '<br>';
-				var_dump($pedido->fecha);
-				die(); */
-				?>
+			<?php while ($producto = $productos->fetch_object()): ?>
 
 				<tr>
 					<td>

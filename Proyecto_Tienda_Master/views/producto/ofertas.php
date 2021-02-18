@@ -9,11 +9,11 @@
 				<img src="<?=base_url?>assets/img/camiseta.png" />
 				<?php endif; ?>
 
-			<h2><?=$pro->nombre?></h2></a>
+				<p><img style="height: 80px; width: 100px; float: left;" src="<?=base_url?>assets/img/oferta.png" alt="oferta"></p><br>
+				<h2><?=$pro->nombre?></h2></a>
 				
-				<p><img style="height: 100px; width: 100px; float: left;" src="<?=base_url?>assets/img/oferta.png" alt="oferta"></p><br>
-				<p class="price" style="text-decoration:line-through"><?= number_format($pro->precio,2,',','.'); ?> €</p>
-				<p class="price" style="color:red"><b><?= number_format($pro->precio*DESCUENTO,2,',','.'); ?> €</b></p><br><br>
+				<p ><b class="price" style="text-decoration:line-through"><?= number_format($pro->precio,2,',','.'); ?> €</b>&nbsp;&nbsp;
+				<b class="price" style="color:red"><?= number_format($pro->precio*DESCUENTO,2,',','.'); ?> €</b></class=><br><br>
 
 		<a href="<?=base_url?>carrito/add&id=<?=$pro->id?>" class="button">Comprar</a>
 	</div>

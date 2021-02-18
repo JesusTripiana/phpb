@@ -3,6 +3,13 @@
 <a href="<?=base_url?>usuario/registro" class="button button-small">
 	Crear usuario nuevo
 </a>
+<?php if (isset($_SESSION['editar']) && $_SESSION['editar'] && isset($_SESSION['register']) && $_SESSION['register'] == 'complete'): ?>
+	<strong class="alert_green">El usuario se ha EDITADO correctamente</strong>
+<?php endif; 
+
+Utils::deleteSession('editar');
+Utils::deleteSession('register');
+?>
 
 <!-- Codigo NUEVO para mostrar confirmacion o no del borrado de usuario-->
 <?php if (isset($_SESSION['delete']) && $_SESSION['delete'] == 'complete'): ?>
@@ -38,7 +45,8 @@
 			<td><?=$usu->rol;?></td>
 			<!-- NUMBER_FORMAT da formato a una variable INT, explicado mas detallado en DETALLES usuario-->
             <td><?=number_format($usu->totalPedidos,2,',','.');?> €</td>
-			<td>		
+			<td>
+				<a href="<?=base_url?>usuario/editar&id=<?=$usu->id?>" class="button button-gestion">Modificar</a>		
 				<a href="<?=base_url?>usuario/eliminar&id=<?=$usu->id?>" class="button button-gestion button-red">Eliminar</a>	
 			</td>
 		</tr>

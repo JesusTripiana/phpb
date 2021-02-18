@@ -12,19 +12,25 @@
 					<?php else: ?>
 						<img src="<?= base_url ?>assets/img/camiseta.png" />
 					<?php endif; ?>
-					<h2><?= $product->nombre ?></h2>
+					
 				</a>
 
 				<!--si el producto esta en OFERTA-->
 				<?php	if ($product->oferta == 'si'):	?>
-					<p><img style="height: 100px; width: 100px; float: left;" src="<?=base_url?>assets/img/oferta.png" alt="oferta"></p><br>
-					<p class="price" style="text-decoration:line-through"><?= number_format($product->precio,2,',','.'); ?> €</p>
-					<p class="price" style="color:red"><b><?= number_format($product->precio*DESCUENTO,2,',','.'); ?> €</b></p><br><br><br>
+					<p><img style="height: 65px; width: 65px; float: left;" src="<?=base_url?>assets/img/oferta.png" alt="oferta"></p>
+					<h3><?= $product->nombre ?></h3>
+					<p> <b class="price" style="text-decoration:line-through"><?= number_format($product->precio,2,',','.'); ?> € </b> 
+					&nbsp;&nbsp; <b class="price" style="color:red"><?= number_format($product->precio*DESCUENTO,2,',','.'); ?> €</b></p>
 				<?php else: ?>
-					<p class="price"><b><?= number_format($product->precio,2,',','.'); ?> €</b></p><br>
+					<h2><?= $product->nombre ?></h2>
+					<p class="price"><b> <?= number_format($product->precio,2,',','.'); ?> €</b></p>
 				<?php endif; ?>
 
-				<a href="<?=base_url?>carrito/add&id=<?=$product->id?>" class="button">Comprar</a>
+				<?php if ($product->stock==0): ?>
+					<a class="button">NO DISPONIBLE</a>
+				<?php else: ?>
+					<br><a href="<?=base_url?>carrito/add&id=<?=$product->id?>" class="button">Comprar</a>
+				<?php endif; ?>
 			</div>
 		<?php endwhile; ?>
 

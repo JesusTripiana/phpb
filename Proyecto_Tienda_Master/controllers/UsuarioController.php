@@ -37,18 +37,38 @@ class usuarioController{
 				header("Location:".base_url.'usuario/registro');
 				die();
 			}
-	
-			//$_SESSION['nombre'] = $nombre; // no se si esta sesion en el formulario de registro hace algo, preguntar a Alberto
 
-			if($nombre && $apellidos && $email && $password){
+			if (isset($_GET['id'])){
+				$id = $_GET['id'];
+				$usuario = new Usuario();
+				$usuario->setId($id);
+				$usuario->setNombre($nombre);
+				$usuario->setApellidos($apellidos);
+				$usuario->setPassword($password);
+
+				$_SESSION["editar"] = true;
+				
+				$save = $usuario->edit();
+                if (!$save) {
+                    $_SESSION["editar"] = false;
+					$_SESSION['register'] = "failed";
+                }else {
+					$_SESSION['register'] = "complete";
+					Utils::deleteSession('nombre');
+					Utils::deleteSession('apellidos');
+					header("Location:".base_url.'usuario/index');
+					die();
+                }
+				
+			}elseif($nombre && $apellidos && $email && $password){
 				$usuario = new Usuario();
 				$usuario->setNombre($nombre);
 				$usuario->setApellidos($apellidos);
 				$usuario->setEmail($email);
 				$usuario->setPassword($password);
-
-
+ 
 				$save = $usuario->save();
+
 				if($save){
 					$_SESSION['register'] = "complete";
 				}else{
@@ -57,11 +77,29 @@ class usuarioController{
 			}else{
 				$_SESSION['register'] = "failed";
 			}
-			// cuando haga modificacion de datos de usuario tengo que comprobar GET id de usuario
-		}else{
+	
+		}else {
 			$_SESSION['register'] = "failed";
 		}
 		header("Location:".base_url.'usuario/registro');
+	}
+
+	public function editar(){
+		Utils::isAdmin();
+		if(isset($_GET['id'])){
+			$id = $_GET['id'];
+			$_SESSION['editar'] = true;
+			
+			$usuario = new Usuario();
+			$usuario->setId($id);
+			
+			$usu = $usuario->getOne();
+			
+			require_once 'views/usuario/registro.php';
+			
+		}else{
+			header('Location:'.base_url.'Producto/gestion');
+		}
 	}
 
 	public function detalle(){

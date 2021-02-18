@@ -92,6 +92,12 @@ class Utils{
 		} 
 		return $dato;
     }
+
+	public static function eliminarSesionesRegistro(){
+			Utils::deleteSession('nombre'); 
+			Utils::deleteSession('apellidos');
+			Utils::deleteSession('email');
+	}
 	
 }
 

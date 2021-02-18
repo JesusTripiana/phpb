@@ -1,12 +1,20 @@
-<?php if(isset($edit) && isset($usu) && is_object($usu)): ?>
-	<h1>Editando usuario <?=$usu->nombre?></h1>
-	<?php $url_action = base_url."usuario/save&id=".$usu->id; ?>
 
-	<?php else: ?>
+<?php if(isset($_SESSION['editar'])): ?>
+	<h1>Editando usuario 
+	
+	<?php if(isset($usu) && is_object($usu)){
+		echo $usu->nombre.'</h1>';
+		$url_action = base_url."usuario/save&id=".$usu->id;
+	}else{echo '</h1>';}
+	?>
+
+<?php else: ?>
 		<h1>Registrarse</h1>
 		
 	<?php $url_action = base_url."usuario/save"; ?>
 <?php endif; ?>
+
+	
 
 <?php if (isset($_SESSION['msgERROR'])):?>
 	<strong class="alert_red"><?= $_SESSION['msgERROR']?></strong>
@@ -21,10 +29,13 @@ endif;?>
 		<!-- compruebo si es administrador o usuario para redirigir a una vista o a otra con una recarga de la pagina de 4 segundos solo visualizando
 		el mensaje de REGISTRO COMPLETADO CORRECTAMENTE-->
 		<?php if (isset($_SESSION["admin"])){
+
+			Utils::eliminarSesionesRegistro();
 			header("Refresh:4; url=".base_url."usuario/index");
 		
 		}else{
 			header("Refresh:4; url=".base_url."");
+			Utils::eliminarSesionesRegistro();
 		
 		}
 		Utils::deleteSession('register');
@@ -36,20 +47,49 @@ endif;?>
 <?php endif; 
  Utils::deleteSession('register'); ?>
 
+<?php // compruebo los datos recibidos en el formulario para mostrar una cosa u otra
+ if(isset($_SESSION['nombre'])){
+	$nombre = $_SESSION['nombre'];
+}elseif (isset($usu) && is_object($usu)) {
+	$nombre = $usu->nombre;
+}else{
+	$nombre = '';
+}
 
+
+if(isset($_SESSION['apellidos'])){
+	$apellidos = $_SESSION['apellidos'];
+}elseif (isset($usu) && is_object($usu)) {
+	$apellidos = $usu->apellidos;
+}else{
+	$apellidos = '';
+}
+
+
+if(isset($_SESSION['email'])){
+	$email = $_SESSION['email'];
+}elseif (isset($usu) && is_object($usu)) {
+	$email = $usu->email;
+}else{
+	$email = '';
+}
+?>
 
 <form action="<?=$url_action?>" method="POST">
 	
 	<label for="nombre">Nombre</label>
-	<input type="text" name="nombre" placeholder="<?=isset($_SESSION['nombre'])? $_SESSION['nombre']:" ";?>" required/> 
+	<input type="text" name="nombre" value="<?=$nombre?>" required/>
 
 	<label for="apellidos">Apellidos</label>
-	<input type="text" name="apellidos" placeholder="<?=isset($_SESSION['apellidos'])? $_SESSION['apellidos']:" ";?>" required/> 
-	<!--<input type="text" name="apellidos" value="  <//isset($edit) && (isset($usu) && is_object($usu))? $usu->apellidos:" ";?>" required/>-->
+	<input type="text" name="apellidos" value="<?=$apellidos?>" required/>
 	
+	<?php // si el usuario es administrador y editar no existe se muestra 
+	if (!isset($_SESSION['editar'])):?>
 	<label for="email">Email</label>
-	<input type="email" name="email" placeholder="<?=isset($_SESSION['email'])? $_SESSION['email']:" ";?>" required/> 
-	
+	<input type="text" name="email" value="<?=$email?>" required/>
+	<?php endif;?>
+
+
 	<label for="password">Contraseña</label>
 	<input type="password" name="password" required/>
 
@@ -57,9 +97,7 @@ endif;?>
 	<input type="password" name="password2" required/>
 
 	<?php  
- 	Utils::deleteSession('nombre'); 
-	Utils::deleteSession('apellidos');
-	Utils::deleteSession('email');
+ 	Utils::eliminarSesionesRegistro();
  	?>
 
 	<input type="submit" value="Registrarse" />

@@ -97,6 +97,17 @@ class Usuario{
 		}
 		return $result;
 	}
+	public function edit(){
+		$sql = "UPDATE usuarios SET nombre='{$this->getNombre()}', apellidos='{$this->getApellidos()}', password='{$this->getPassword()}' WHERE id={$this->id};";
+		
+		$save = $this->db->query($sql);
+		
+		$result = false;
+		if($save){
+			$result = true;
+		}
+		return $result;
+	}
 	
 	public function login(){
 		$result = false;
